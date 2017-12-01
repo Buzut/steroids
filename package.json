@@ -1,0 +1,36 @@
+{
+  "name": "newname",
+  "version": "1.0.0",
+  "description": "The next big thing",
+  "scripts": {
+    "css:build": "lessc styles/main.less | postcss --use autoprefixer -b 'last 2 versions' | cssmin > style.css",
+    "css:watch": "nodemon -e less --watch styles -x 'npm run css:build'",
+    "js:build": "browserify js/main.js | babel --presets=env | uglifyjs -o js/main.min.js",
+    "js:watch": "nodemon -e js --watch js --ignore js/main.min.js -x 'npm run js:build'",
+    "build": "npm run css:build && npm run js:build",
+    "watch": "npm run css:watch && npm run js:watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "xxxx.git"
+  },
+  "author": "Buzut (https://buzut.fr)",
+  "devDependencies": {
+    "autoprefixer": "latest",
+    "babel-cli": "latest",
+    "babel-preset-env": "latest",
+    "browserify": "latest",
+    "cssmin": "latest",
+    "eslint": "latest",
+    "eslint-config-airbnb-base": "latest",
+    "eslint-plugin-import": "latest",
+    "html-minifier": "latest",
+    "less": "latest",
+    "nodemon": "latest",
+    "postcss-cli": "latest",
+    "stylelint": "latest",
+    "stylelint-config-standard": "latest",
+    "stylelint-order": "latest",
+    "uglify-js": "latest"
+  }
+}
