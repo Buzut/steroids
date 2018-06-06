@@ -6,7 +6,7 @@
     "globals": {
     },
     "rules": {
-        "indent": [2, 4],
+        "indent": ["error", 4, { "MemberExpression": 0 }],
         "func-names": ["error", "never"],
         "no-new": "off",
         "comma-dangle": ["error", "never"],
