@@ -4,7 +4,6 @@
         "browser": true,
     },
     "globals": {
-        "ga": true
     },
     "rules": {
         "indent": [2, 4],
