@@ -113,11 +113,12 @@ function html5blank_nav() {
 	);
 }
 
-// Load HTML5 Blank scripts (header.php)
+// Load scripts (header.php)
+// not loaded by default because it can't use modules scripts, preferer hardcoding for module
 function html5blank_header_scripts() {
     if ($GLOBALS['pagenow'] != 'wp-login.php' && !is_admin()) {
-        wp_register_script('html5blankscripts', get_template_directory_uri() . '/js/main.min.js', array(), '1.0'); // Custom scripts
-        wp_enqueue_script('html5blankscripts'); // Enqueue it!
+        wp_register_script('mydefaultscript', get_template_directory_uri() . '/js/main.min.js', array(), '1.0');
+        wp_enqueue_script('mydefaultscript');
     }
 }
 
@@ -297,7 +298,7 @@ function html5blankcomments($comment, $args, $depth) {
 
 // Add Actions
 add_action('wp_footer', 'deregister_wp_embed');
-add_action('init', 'html5blank_header_scripts'); // Add Custom Scripts to wp_head
+// add_action('init', 'html5blank_header_scripts'); // Add Custom Scripts to wp_head
 
 add_action('wp_enqueue_scripts', 'html5blank_styles'); // Add Theme Stylesheet
 add_action('init', 'register_html5_menu'); // Add HTML5 Blank Menu
