@@ -1,11 +1,8 @@
-(function ($, root, undefined) {
-	
-	$(function () {
-		
-		'use strict';
-		
-		// DOM ready, take it away
-		
-	});
-	
-})(jQuery, this);
+function domready(callback){
+    if (document.readyState !== 'loading') callback();
+    else document.addEventListener('DOMContentLoaded', callback);
+}
+
+domready(() => {
+    // dom is ready, your code goes here
+});
