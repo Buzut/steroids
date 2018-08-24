@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-	<main role="main">
+	<main>
 		<!-- section -->
 		<section>
 
