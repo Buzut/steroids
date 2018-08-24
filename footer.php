@@ -1,5 +1,5 @@
 		<!-- footer -->
-		<footer class="footer">
+		<footer>
 			<!-- copyright -->
 			<p class="copyright">
 				© <?php echo date('Y'); ?> Copyright <?php bloginfo('name'); ?>. <?php _e('Powered by', 'html5blank'); ?>
