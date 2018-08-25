@@ -16,6 +16,8 @@
           "left",
           "z-index",
           "display",
+          "justify-content",
+          "align-items",
           "float",
           "width",
           "min-width",
