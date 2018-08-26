@@ -19,11 +19,14 @@ function remove_jquery(&$scripts) {
     }
 }
 
-function deregister_wp_embed(){
+function deregister_wp_embed() {
     wp_deregister_script('wp-embed');
 }
 
 if (function_exists('add_theme_support')) {
+    // Declare HTML5
+    add_theme_support('html5');
+
     // Add Menu Support
     add_theme_support('menus');
 
