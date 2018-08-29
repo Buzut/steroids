@@ -16,13 +16,21 @@
           "left",
           "z-index",
           "display",
+          "flex-direction",
+          "flex-wrap",
           "justify-content",
           "align-items",
+          "align-content",
           "float",
           "width",
           "min-width",
           "max-width",
           "height",
+          "order",
+          "flex-grow",
+          "flex-shrink",
+          "flex-basis",
+          "align-self",
           "min-height",
           "max-height",
           "box-sizing",
@@ -89,10 +97,6 @@
           "cursor",
           "visibility",
           "zoom",
-          "flex-direction",
-          "flex-order",
-          "flex-pack",
-          "flex-align",
           "table-layout",
           "empty-cells",
           "caption-side",
@@ -180,4 +184,3 @@
       ]
   }
 }
-
