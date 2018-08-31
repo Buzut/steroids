@@ -60,6 +60,15 @@ if (function_exists('add_theme_support')) {
     load_theme_textdomain('html5blank', get_template_directory() . '/languages');
 }
 
+// prevent WP from generating certain resized images
+function unset_image_sizes($sizes){
+    unset($sizes['thumbnail']);
+    // unset($sizes['medium']);
+    // unset($sizes['medium_large']);
+    // unset($sizes['large']);
+    return $sizes;
+}
+
 // replace src img by large one
 // https://buzut.fr/wordpress-les-fonctions-secretes-du-functions-php/
 function replace_uploaded_image($image_data) {
@@ -293,9 +302,10 @@ add_filter('script_loader_src', 'remove_cssjs_ver', 10, 2);
 add_filter('wp_resource_hints', 'remove_dns_prefetch', 10, 2);
 add_filter('post_thumbnail_html', 'remove_thumbnail_dimensions', 10); // Remove width and height dynamic attributes to thumbnails
 add_filter('image_send_to_editor', 'remove_thumbnail_dimensions', 10); // Remove width and height dynamic attributes to post images
-add_filter('jpeg_quality', function($arg){ return 50; }); // how to compress images
+add_filter('jpeg_quality', function($arg){ return 50; }); // How to compress images
 add_filter('wp_calculate_image_srcset_meta', '__return_null'); // Remove srcset
 // add_filter('wp_generate_attachment_metadata', 'replace_uploaded_image');
+// add_filter('intermediate_image_sizes_advanced', 'unset_image_sizes'); // Remove certain sizes from resized images (cf unset_image_sizes ƒ) 
 // add_filter('image_size_names_choose', 'custom_image_sizes_choose'); // Insert custom image size in media gallery
 add_filter('auto_update_plugin', '__return_true'); // Auto update plugins
 
