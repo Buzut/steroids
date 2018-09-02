@@ -11,7 +11,7 @@
     "js:build": "npm run js:esmbuild && npm run js:iifebuild",
     "js:watch": "BABEL_ENV=esm rollup --config --watch",
     "build": "npm run css:build && npm run js:build",
-    "watch": "npm run css:watch && npm run js:watch"
+    "watch": "npm run css:watch & npm run js:watch"
   },
   "repository": {
     "type": "git",
