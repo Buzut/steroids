@@ -32,5 +32,5 @@ const iife = {
     ]
 };
 
-const conf = process.env.BABEL_ENV === 'iife' ? esm : iife;
+const conf = process.env.BABEL_ENV === 'esm' ? esm : iife;
 export default conf;
