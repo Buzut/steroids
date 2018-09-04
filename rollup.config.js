@@ -7,6 +7,7 @@ const esm = {
     input: 'js/main.js',
     output: {
         format: 'es',
+        sourcemap: true,
         file: 'js/main.esm.min.js'
     },
     plugins: [
