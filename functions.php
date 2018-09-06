@@ -236,7 +236,7 @@ function clean_script_tag($input) {
 }
 
 // Remove query string from static files
-function remove_cssjs_ver( $src ) {
+function remove_cssjs_ver($src) {
     if (strpos($src, '?ver='))
     $src = remove_query_arg('ver', $src);
     return $src;
@@ -249,7 +249,7 @@ function remove_dns_prefetch($hints, $relation_type) {
 }
 
 // Remove thumbnail width and height dimensions that prevent fluid images in the_thumbnail
-function remove_thumbnail_dimensions( $html ) {
+function remove_thumbnail_dimensions($html) {
     $html = preg_replace('/(width|height)=\"\d*\"\s/', "", $html);
     return $html;
 }
