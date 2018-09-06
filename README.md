@@ -20,7 +20,7 @@ You'll need Node.js and NPM to develop with this theme as NPM scripts are used t
 
 After downloading the theme into your WordPress `themes/` directory, all you have to do is install other dependencies through npm with `npm install` and you're good to go.
 
-Processed CSS will be outputed to `style.css` and processed JavaScript to `scripts/main.min.js`.
+Processed CSS will be outputed to `style.css` and processed JavaScript to `scripts/main.esm.min.js` & `scripts/main.iife.min.js`.
 
 - `npm run css:build` to build, prefix and minify CSS
 - `npm run js:build` to compile and minify JS
