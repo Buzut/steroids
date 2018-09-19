@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "The next big thing",
   "scripts": {
-    "css:build": "lessc styles/main.less | postcss --use autoprefixer -b 'last 2 versions' | cssmin > styles.css",
+    "css:build": "lessc styles/main.less | postcss --use autoprefixer -b 'last 2 versions' | cssmin > /styles/main.min.css",
     "css:watch": "nodemon -e less --watch styles -x 'npm run css:build'",
     "js:build": "browserify js/main.js | babel | uglifyjs -o js/main.min.js",
     "js:esmbuild": "BABEL_ENV=esm rollup --config",

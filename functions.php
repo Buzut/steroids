@@ -14,9 +14,7 @@
 \*------------------------------------*/
 
 function remove_jquery(&$scripts) {
-    if (!is_admin()) {
-        $scripts->remove('jquery');
-    }
+    if (!is_admin()) $scripts->remove('jquery');
 }
 
 function deregister_wp_embed() {
@@ -308,7 +306,7 @@ add_filter('image_send_to_editor', 'remove_thumbnail_dimensions', 10); // Remove
 add_filter('jpeg_quality', function($arg){ return 50; }); // How to compress images
 add_filter('wp_calculate_image_srcset_meta', '__return_null'); // Remove srcset
 // add_filter('wp_generate_attachment_metadata', 'replace_uploaded_image');
-// add_filter('intermediate_image_sizes_advanced', 'unset_image_sizes'); // Remove certain sizes from resized images (cf unset_image_sizes ƒ) 
+// add_filter('intermediate_image_sizes_advanced', 'unset_image_sizes'); // Remove certain sizes from resized images (cf unset_image_sizes ƒ)
 // add_filter('image_size_names_choose', 'custom_image_sizes_choose'); // Insert custom image size in media gallery
 add_filter('auto_update_plugin', '__return_true'); // Auto update plugins
 

@@ -1,6 +1,6 @@
 .DS_Store
 node_modules
-style.css
+*.min.css
 *.min.js
 *.map
 *.br
