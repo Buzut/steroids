@@ -10,7 +10,11 @@
     "js:iifebuild": "BABEL_ENV=iife rollup --config",
     "js:build": "npm run js:esmbuild && npm run js:iifebuild",
     "js:watch": "BABEL_ENV=esm rollup --config --watch",
-    "build": "npm run css:build && npm run js:build",
+    "compress:gz": "find . -path './node_modules' -prune -o ! -name rollup.config.js \\( -name -o -name '*.svg' -o -name '*.js' -o -name '*.css' \\) -exec gzip -9 -k -f '{}' \\;",
+    "compress:br": "find . -path './node_modules' -prune -o ! -name rollup.config.js \\( -name -o -name '*.svg' -o -name '*.js' -o -name '*.css' \\) -exec brotli -Zf '{}' \\;",
+    "compress:clean": "find . -path './node_modules' -prune -o -name '*.gz' -exec rm '{}' \\; && find . -path './node_modules' -prune -o -name '*.br' -exec rm '{}' \\;",
+    "compress": "npm run compress:gz && npm run compress:br",
+    "build": "npm run css:build && npm run js:build && npm run compress",
     "watch": "npm run css:watch & npm run js:watch"
   },
   "repository": {
