@@ -15,7 +15,7 @@
     "compress:clean": "find . -path './node_modules' -prune -o -name '*.gz' -exec rm '{}' \\; && find . -path './node_modules' -prune -o -name '*.br' -exec rm '{}' \\;",
     "compress": "npm run compress:gz && npm run compress:br",
     "build": "npm run css:build && npm run js:build && npm run compress",
-    "watch": "npm run css:watch & npm run js:watch"
+    "watch": "npm run compress:clean && npm run css:watch & npm run js:watch"
   },
   "repository": {
     "type": "git",
