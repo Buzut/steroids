@@ -222,9 +222,9 @@ function remove_admin_bar() {
 
 // Convert css links to HTML5
 function clean_style_tag($html, $handle, $href, $media) {
-    $strippedType = str_replace(" type='text/css'", '', $html);
-    $strippedId = str_replace( " id='$handle-css' ", '', $strippedType);
-    return str_replace(" media='all' /", '', $strippedId);
+    $stripped_type = str_replace(" type='text/css'", '', $html);
+    $stripped_id = str_replace( " id='$handle-css' ", '', $stripped_type);
+    return str_replace(" media='all' /", '', $stripped_id);
 }
 
 // Remove useless markup from scripts
