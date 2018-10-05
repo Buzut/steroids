@@ -6,15 +6,15 @@
     "globals": {
     },
     "rules": {
-        "indent": ["error", 4, { "MemberExpression": 0 }],
-        "func-names": ["error", "never"],
-        "no-new": "off",
-        "comma-dangle": ["error", "never"],
-        "max-len": ["off", 120],
-        "no-plusplus": "off",
-        "no-underscore-dangle": "off",
-        "no-param-reassign": ["error", { "props": false }],
         "brace-style": ["error", "stroustrup"],
+        "comma-dangle": ["error", "never"],
+        "func-names": ["error", "never"],
         "import/no-extraneous-dependencies": ["error", {"devDependencies": true, "optionalDependencies": false, "peerDependencies": false}]
+        "indent": ["error", 4, { "MemberExpression": 0 }],
+        "max-len": ["off", 120],
+        "no-new": "off",
+        "no-param-reassign": ["error", { "props": false }],
+        "no-plusplus": "off",
+        "no-underscore-dangle": "off"
     }
 }
