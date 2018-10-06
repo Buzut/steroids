@@ -1,3 +1,3 @@
 <div class="pagination">
-	<?php html5wp_pagination(); ?>
+	<?php steroids_pagination(); ?>
 </div>

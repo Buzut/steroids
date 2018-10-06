@@ -20,6 +20,6 @@
 				</div>
 
 				<nav class="nav">
-					<?php steroids_nav(); ?>
+					<?php steroids_primary_nav(); ?>
 				</nav>
 		</header>
