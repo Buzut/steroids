@@ -29,14 +29,14 @@ add_image_size('small', 120, '', true); // Small Thumbnail
 
 // Add support for custom backgrounds
 // https://codex.wordpress.org/Custom_Backgrounds
-// add_theme_support('custom-background', array(
+// add_theme_support('custom-background', [
 //     'default-color' => 'FFF',
 //     'default-image' => get_template_directory_uri() . '/img/bg.jpg'
-// ));
+// ]);
 
 // Add Support for Custom Header
 // https://codex.wordpress.org/Custom_Headers
-// add_theme_support('custom-header', array(
+// add_theme_support('custom-header', [
 //     'default-image'			=> get_template_directory_uri() . '/img/headers/default.jpg',
 //     'header-text'			=> false,
 //     'default-text-color'		=> '000',
@@ -46,7 +46,7 @@ add_image_size('small', 120, '', true); // Small Thumbnail
 //     'wp-head-callback'		=> $wphead_cb,
 //     'admin-head-callback'		=> $adminhead_cb,
 //     'admin-preview-callback'	=> $adminpreview_cb
-// ));
+// ]);
 
 // Localisation Support
 load_theme_textdomain('steroids', get_template_directory() . '/languages');

@@ -9,7 +9,7 @@
 // add as many as you need and reference them in register_nav_menus ƒ below
 // https://developer.wordpress.org/reference/functions/wp_nav_menu/
 function steroids_primary_nav() {
-	wp_nav_menu(array(
+	wp_nav_menu([
 		'theme_location'  => 'header-menu',
 		'menu'            => '',
 		'container'       => 'div',
@@ -26,22 +26,22 @@ function steroids_primary_nav() {
 		'items_wrap'      => '<ul>%3$s</ul>',
 		'depth'           => 0,
 		'walker'          => ''
-	));
+	]);
 }
 
 // Register navigation
 // https://codex.wordpress.org/Function_Reference/register_nav_menus
 function steroids_register_nav_menus() {
-    register_nav_menus(array(
+    register_nav_menus([
         'primary' => 'Header menu'
         // 'sidebar-menu' => __('Sidebar Menu', 'steroids'), // Sidebar Navigation
         // 'extra-menu' => __('Extra Menu', 'steroids') // Extra Navigation if needed (duplicate as many as you need!)
-    ));
+    ]);
 }
 add_action('init', 'steroids_register_nav_menus');
 
 // Define Sidebar Widget Area 1 (add as many as you need)
-// register_sidebar(array(
+// register_sidebar([
 //     'name' => __('Widget Area 1', 'steroids'),
 //     'description' => __('Description for this widget-area...', 'steroids'),
 //     'id' => 'widget-area-1',
@@ -49,7 +49,7 @@ add_action('init', 'steroids_register_nav_menus');
 //     'after_widget' => '</div>',
 //     'before_title' => '<h3>',
 //     'after_title' => '</h3>'
-// ));
+// ]);
 
 // Remove image sizes that won't be used to save server space
 // comment what you want to keep
@@ -85,9 +85,7 @@ function steroids_replace_uploaded_image($image_data) {
 // Insert custom image size in media gallery
 // just add the size's name you defined in the theme support section with add_image_size ƒ
 function steroids_set_ui_image_sizes($sizes) {
-    $custom_sizes = array(
-        'small' => 'Small'
-    );
+    $custom_sizes = ['small' => 'Small'];
 
     return array_merge($sizes, $custom_sizes);
 }

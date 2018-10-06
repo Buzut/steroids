@@ -31,10 +31,10 @@ add_filter('the_category', 'steroids_clean_category_list');
 // Remove wp_head() injected Recent Comment styles
 function steroids_remove_recent_comments_style() {
     global $wp_widget_factory;
-    remove_action('wp_head', array(
+    remove_action('wp_head', [
         $wp_widget_factory->widgets['WP_Widget_Recent_Comments'],
         'recent_comments_style'
-    ));
+    ]);
 }
 add_action('widgets_init', 'steroids_remove_recent_comments_style');
 
@@ -78,21 +78,21 @@ add_filter('post_thumbnail_html', 'steroids_remove_thumbnail_dimensions', 10); /
 add_filter('image_send_to_editor', 'steroids_remove_thumbnail_dimensions', 10); // Remove width and height dynamic attributes to post images
 
 // Load styles
-function add_styles() {
-    wp_register_style('steroids', get_template_directory_uri() . '/styles/main.min.css', array(), '1.0');
+function steroids_add_styles() {
+    wp_register_style('steroids', get_template_directory_uri() . '/styles/main.min.css', [], '1.0');
     wp_enqueue_style('steroids'); // Enqueue it!
 }
-add_action('wp_enqueue_scripts', 'add_styles');
+add_action('wp_enqueue_scripts', 'steroids_add_styles');
 
 // Load scripts (header.php)
 // not loaded by default because it can't use modules scripts, preferer hardcoding for module
-function add_header_scripts() {
+function steroids_add_header_scripts() {
     if ($GLOBALS['pagenow'] != 'wp-login.php' && !is_admin()) {
-        wp_register_script('mydefaultscript', get_template_directory_uri() . '/js/main.min.js', array(), '1.0');
+        wp_register_script('mydefaultscript', get_template_directory_uri() . '/js/main.min.js', [], '1.0');
         wp_enqueue_script('mydefaultscript');
     }
 }
-// add_action('init', 'add_header_scripts'); // Add Custom Scripts to wp_head
+// add_action('init', 'steroids_add_header_scripts');
 
 
 /*------------------------------------*\
