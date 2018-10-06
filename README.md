@@ -65,3 +65,6 @@ A handfull of pre-defined functions in `functions.php`:
 * Built-in pagination
 * Image optimisation built-in
 * And many more, just take a look at [functions.php](functions.php)
+
+#### `steroids` prefix
+Functions are prefixed by `steroids_` to avoid collision. If you want to rename them, you can do so with a project wide search and replace to replace all instances of `steroids_` by the awesome name you chose.
