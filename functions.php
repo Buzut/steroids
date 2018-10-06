@@ -28,34 +28,39 @@ if (function_exists('add_theme_support')) {
     // Add Menu Support
     add_theme_support('menus');
 
+    // WooCommerce support (uncomment only if building WooCommerce theme)
+    // add_theme_support('woocommerce');
+
     // Add Thumbnail Theme Support
     add_theme_support('post-thumbnails');
     add_image_size('large', 700, '', true); // Large Thumbnail
     add_image_size('medium', 250, '', true); // Medium Thumbnail
     add_image_size('small', 120, '', true); // Small Thumbnail
-    //add_image_size('custom-size', 700, 200, true); // Custom Thumbnail Size call using the_post_thumbnail('custom-size');
+    // add_image_size('custom-size', 700, 200, true); // Custom Thumbnail Size call using the_post_thumbnail('custom-size');
 
-    // Add Support for Custom Backgrounds - Uncomment below if you're going to use
-    /*add_theme_support('custom-background', array(
-	'default-color' => 'FFF',
-	'default-image' => get_template_directory_uri() . '/img/bg.jpg'
-    ));*/
+    // Add support for custom backgrounds
+    // https://codex.wordpress.org/Custom_Backgrounds
+    // add_theme_support('custom-background', array(
+    //     'default-color' => 'FFF',
+    //     'default-image' => get_template_directory_uri() . '/img/bg.jpg'
+    // ));
 
-    // Add Support for Custom Header - Uncomment below if you're going to use
-    /*add_theme_support('custom-header', array(
-	'default-image'			=> get_template_directory_uri() . '/img/headers/default.jpg',
-	'header-text'			=> false,
-	'default-text-color'		=> '000',
-	'width'				=> 1000,
-	'height'			=> 198,
-	'random-default'		=> false,
-	'wp-head-callback'		=> $wphead_cb,
-	'admin-head-callback'		=> $adminhead_cb,
-	'admin-preview-callback'	=> $adminpreview_cb
-    ));*/
+    // Add Support for Custom Header
+    // https://codex.wordpress.org/Custom_Headers
+    // add_theme_support('custom-header', array(
+	//     'default-image'			=> get_template_directory_uri() . '/img/headers/default.jpg',
+	//     'header-text'			=> false,
+	//     'default-text-color'		=> '000',
+	//     'width'				=> 1000,
+	//     'height'			=> 198,
+	//     'random-default'		=> false,
+	//     'wp-head-callback'		=> $wphead_cb,
+	//     'admin-head-callback'		=> $adminhead_cb,
+	//     'admin-preview-callback'	=> $adminpreview_cb
+    // ));
 
     // Localisation Support
-    load_theme_textdomain('html5blank', get_template_directory() . '/languages');
+    load_theme_textdomain('steroids', get_template_directory() . '/languages');
 }
 
 // prevent WP from generating certain resized images
@@ -100,7 +105,7 @@ function custom_image_sizes_choose($sizes) {
 \*------------------------------------*/
 
 // HTML5 Blank navigation
-function html5blank_nav() {
+function steroids_nav() {
 	wp_nav_menu(
 	array(
 		'theme_location'  => 'header-menu',
@@ -125,7 +130,7 @@ function html5blank_nav() {
 
 // Load scripts (header.php)
 // not loaded by default because it can't use modules scripts, preferer hardcoding for module
-function html5blank_header_scripts() {
+function steroids_header_scripts() {
     if ($GLOBALS['pagenow'] != 'wp-login.php' && !is_admin()) {
         wp_register_script('mydefaultscript', get_template_directory_uri() . '/js/main.min.js', array(), '1.0');
         wp_enqueue_script('mydefaultscript');
@@ -133,17 +138,17 @@ function html5blank_header_scripts() {
 }
 
 // Load HTML5 Blank styles
-function html5blank_styles() {
-    wp_register_style('html5blank', get_template_directory_uri() . '/style.css', array(), '1.0');
-    wp_enqueue_style('html5blank'); // Enqueue it!
+function steroids_styles() {
+    wp_register_style('steroids', get_template_directory_uri() . '/styles/main.min.css', array(), '1.0');
+    wp_enqueue_style('steroids'); // Enqueue it!
 }
 
 // Register HTML5 Blank Navigation
 function register_html5_menu() {
     register_nav_menus(array(
         'primary' => 'Header menu'
-        // 'sidebar-menu' => __('Sidebar Menu', 'html5blank'), // Sidebar Navigation
-        // 'extra-menu' => __('Extra Menu', 'html5blank') // Extra Navigation if needed (duplicate as many as you need!)
+        // 'sidebar-menu' => __('Sidebar Menu', 'steroids'), // Sidebar Navigation
+        // 'extra-menu' => __('Extra Menu', 'steroids') // Extra Navigation if needed (duplicate as many as you need!)
     ));
 }
 
@@ -167,8 +172,8 @@ function remove_category_rel_from_category_list($thelist) {
 if (function_exists('register_sidebar')) {
     // Define Sidebar Widget Area 1
     register_sidebar(array(
-        'name' => __('Widget Area 1', 'html5blank'),
-        'description' => __('Description for this widget-area...', 'html5blank'),
+        'name' => __('Widget Area 1', 'steroids'),
+        'description' => __('Description for this widget-area...', 'steroids'),
         'id' => 'widget-area-1',
         'before_widget' => '<div id="%1$s" class="%2$s">',
         'after_widget' => '</div>',
@@ -178,8 +183,8 @@ if (function_exists('register_sidebar')) {
 
     // Define Sidebar Widget Area 2
     register_sidebar(array(
-        'name' => __('Widget Area 2', 'html5blank'),
-        'description' => __('Description for this widget-area...', 'html5blank'),
+        'name' => __('Widget Area 2', 'steroids'),
+        'description' => __('Description for this widget-area...', 'steroids'),
         'id' => 'widget-area-2',
         'before_widget' => '<div id="%1$s" class="%2$s">',
         'after_widget' => '</div>',
@@ -212,7 +217,7 @@ function html5wp_pagination() {
 // Custom View Article link to Post
 function html5_blank_view_article($more) {
     global $post;
-    return '... <a class="view-article" href="' . get_permalink($post->ID) . '">' . __('View Article', 'html5blank') . '</a>';
+    return '... <a class="view-article" href="' . get_permalink($post->ID) . '">' . __('View Article', 'steroids') . '</a>';
 }
 
 // Remove Admin bar
@@ -258,9 +263,9 @@ function remove_thumbnail_dimensions($html) {
 
 // Add Actions
 add_action('wp_footer', 'deregister_wp_embed');
-// add_action('init', 'html5blank_header_scripts'); // Add Custom Scripts to wp_head
+// add_action('init', 'steroids_header_scripts'); // Add Custom Scripts to wp_head
 
-add_action('wp_enqueue_scripts', 'html5blank_styles'); // Add Theme Stylesheet
+add_action('wp_enqueue_scripts', 'steroids_styles'); // Add Theme Stylesheet
 add_action('init', 'register_html5_menu'); // Add HTML5 Blank Menu
 add_action('widgets_init', 'my_remove_recent_comments_style'); // Remove inline Recent Comment Styles from wp_head()
 add_action('init', 'html5wp_pagination'); // Add our HTML5 Pagination
