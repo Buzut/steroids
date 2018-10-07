@@ -5,7 +5,6 @@
   "scripts": {
     "css:build": "lessc styles/main.less | postcss --use autoprefixer -b 'last 2 versions' | cssmin > /styles/main.min.css",
     "css:watch": "nodemon -e less --watch styles -x 'npm run css:build'",
-    "js:build": "browserify js/main.js | babel | uglifyjs -o js/main.min.js",
     "js:esmbuild": "BABEL_ENV=esm rollup --config",
     "js:iifebuild": "BABEL_ENV=iife rollup --config",
     "js:build": "npm run js:esmbuild && npm run js:iifebuild",
