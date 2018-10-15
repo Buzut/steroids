@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "The next big thing",
   "scripts": {
-    "css:build": "lessc styles/main.less | postcss --use autoprefixer -b 'last 2 versions' | cssmin > /styles/main.min.css",
-    "css:watch": "nodemon -e less --watch styles -x 'npm run css:build'",
+    "css:build:dev": "lessc --source-map-map-inline styles/main.less styles/main.min.css",
+    "css:build:prod": "lessc styles/main.less | postcss --use autoprefixer -b 'last 2 versions' | cssmin > styles/main.min.css",
+    "css:watch": "nodemon -e less --watch styles -x 'npm run css:build:dev'",
     "js:esmbuild": "BABEL_ENV=esm rollup --config",
     "js:iifebuild": "BABEL_ENV=iife rollup --config",
     "js:build": "npm run js:esmbuild && npm run js:iifebuild",
@@ -13,7 +14,7 @@
     "compress:br": "find . -path './node_modules' -prune -o ! -name rollup.config.js \\( -name -o -name '*.svg' -o -name '*.js' -o -name '*.css' \\) -exec brotli -Zf '{}' \\;",
     "compress:clean": "find . -path './node_modules' -prune -o -name '*.gz' -exec rm '{}' \\; && find . -path './node_modules' -prune -o -name '*.br' -exec rm '{}' \\;",
     "compress": "npm run compress:gz && npm run compress:br",
-    "build": "npm run css:build && npm run js:build && npm run compress",
+    "build": "npm run css:build:prod && npm run js:build && npm run compress",
     "watch": "npm run compress:clean && npm run css:watch & npm run js:watch"
   },
   "repository": {

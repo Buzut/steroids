@@ -31,7 +31,8 @@ After downloading the theme into your WordPress `themes/` directory, all you hav
 
 Processed CSS will be outputed to `styles/main.min.css` and processed JavaScript to `scripts/main.esm.min.js` & `scripts/main.iife.min.js`.
 
-- `npm run css:build` to build, prefix and minify CSS
+- `npm run css:build:dev` to compile less files and add sourcemaps
+- `npm run css:build:prod` to build, prefix and minify styles
 - `npm run js:build` to compile and minify JS
 - `npm run build` to build and minify CSS & JS
 - `npm run watch` to watch and automatically re-build CSS & JS during development
