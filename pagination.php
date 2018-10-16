@@ -1,3 +1,3 @@
-<div class="pagination">
+<nav class="pagination">
 	<?php steroids_pagination(); ?>
-</div>
+</nav>
