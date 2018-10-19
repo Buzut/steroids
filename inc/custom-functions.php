@@ -10,7 +10,7 @@
 // https://developer.wordpress.org/reference/functions/wp_nav_menu/
 function steroids_primary_nav() {
 	wp_nav_menu([
-		'theme_location'  => 'header-menu',
+		'theme_location'  => 'primary',
 		'menu'            => '',
 		'container'       => 'div',
 		'container_class' => 'menu-{menu slug}-container',
