@@ -1,0 +1,84 @@
+# H2 push if no cookies (first visit)
+# don't forget to replace steroids by your theme's name if modified
+# rationale is to push main.esm.min.js because older browsers don't support H2 anyways
+<Files *.html.br>
+    Header add Link "</wp-content/themes/steroids/styles/main.min.css>;rel=preload" "expr=-z %{req:Cookie}"
+    Header add Link "</wp-content/themes/steroids/js/main.esm.min.js>;rel=preload" "expr=-z %{req:Cookie}"
+</Files>
+
+<Files *.html.gz>
+    Header add Link "</wp-content/themes/steroids/styles/main.min.css>;rel=preload" "expr=-z %{req:Cookie}"
+    Header add Link "</wp-content/themes/steroids/js/main.esm.min.js>;rel=preload" "expr=-z %{req:Cookie}"
+</Files>
+
+<Files *.html>
+    Header add Link "</wp-content/themes/steroids/styles/main.min.css>;rel=preload" "expr=-z %{req:Cookie}"
+    Header add Link "</wp-content/themes/steroids/js/main.esm.min.js>;rel=preload" "expr=-z %{req:Cookie}"
+</Files>
+
+# Specify Brotli-encoded assets
+<Files *.js.br>
+    AddType "application/javascript" .br
+    AddEncoding br .br
+</Files>
+<Files *.css.br>
+    AddType "text/css" .br
+    AddEncoding br .br
+</Files>
+<Files *.svg.br>
+    AddType "image/svg+xml" .br
+    AddEncoding br .br
+</Files>
+<Files *.html.br>
+    AddType "text/html" .br
+    AddEncoding br .br
+</Files>
+
+# Specify gzip-encoded assets
+<Files *.js.gz>
+    AddType "application/javascript" .gz
+    AddEncoding gzip .gz
+</Files>
+<Files *.css.gz>
+    AddType "text/css" .gz
+    AddEncoding gzip .gz
+</Files>
+<Files *.svg.gz>
+    AddType "image/svg+xml" .gz
+    AddEncoding gzip .gz
+</Files>
+<Files *.html.gz>
+    AddType "text/html" .gz
+    AddEncoding gzip .gz
+</Files>
+
+# Rewrite engine ignition
+RewriteEngine on
+RewriteBase /
+
+# Redirect from (.*)index.html to /$1
+RewriteCond %{REQUEST_URI} ^(.*)index\.html$ [NC]
+RewriteRule ^ %1 [R=301,L]
+
+# Redirect from exemple.html to exemple
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s([^.]+)\.html [NC]
+RewriteRule ^ %1 [R=301,L]
+
+# Strip trailing slash if not a dir
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)/$ $1 [R=301,L]
+
+# Serve extensionless html files
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.html -f
+RewriteRule ^(.*)$ $1.html
+
+# Serve pre-compressed Brotli assets
+RewriteCond %{HTTP:Accept-Encoding} br
+RewriteCond %{REQUEST_FILENAME}.br -f
+RewriteRule ^(.*)$ $1.br [L]
+
+# Serve pre-compressed gzip assets
+RewriteCond %{HTTP:Accept-Encoding} gzip
+RewriteCond %{REQUEST_FILENAME}.gz -f
+RewriteRule ^(.*)$ $1.gz [L]
