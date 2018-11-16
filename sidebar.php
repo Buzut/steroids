@@ -1,3 +1,4 @@
+<?php defined('ABSPATH') || exit; ?>
 <aside class="sidebar">
 	<?php get_template_part('searchform'); ?>
 

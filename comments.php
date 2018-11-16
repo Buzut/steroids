@@ -1,3 +1,4 @@
+<?php defined('ABSPATH') || exit; ?>
 <div class="comments">
 <?php if (have_comments()) : ?>
 	<h2><?php comments_number(); ?></h2>
