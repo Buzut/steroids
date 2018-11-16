@@ -1,7 +1,7 @@
 <?php defined('ABSPATH') || exit; ?>
 <?php get_header(); ?>
 
-	<main>
+<main>
 	<?php if (have_posts()): while (have_posts()) : the_post(); ?>
 		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 			<!-- post thumbnail -->
@@ -39,7 +39,7 @@
 			<h1><?php _e('Sorry, nothing to display.', 'steroids'); ?></h1>
 		</article>
 	<?php endif; ?>
-	</main>
+</main>
 
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>

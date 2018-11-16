@@ -1,5 +1,4 @@
 <?php defined('ABSPATH') || exit; ?>
-
 		<footer>
 			<p class="copyright">
 				© <?= date('Y') ?> Copyright <?php bloginfo('name'); ?>.
