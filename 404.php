@@ -4,7 +4,7 @@
 	<main id="post-404">
 		<h1><?php _e('Page not found', 'steroids'); ?></h1>
 		<h2>
-			<a href="<?php echo home_url(); ?>"><?php _e('Return home?', 'steroids'); ?></a>
+			<a href="<?= home_url() ?>"><?php _e('Return home?', 'steroids'); ?></a>
 		</h2>
 	</main>
 

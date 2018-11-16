@@ -2,11 +2,10 @@
 <?php get_header(); ?>
 
 	<main>
-
 	<?php if (have_posts()): while (have_posts()) : the_post(); ?>
 		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 			<!-- post thumbnail -->
-			<?php if ( has_post_thumbnail()) : // Check if Thumbnail exists ?>
+			<?php if (has_post_thumbnail()) : // Check if Thumbnail exists ?>
 				<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
 					<?php the_post_thumbnail(); // Fullsize image for the single post ?>
 				</a>
@@ -40,7 +39,6 @@
 			<h1><?php _e('Sorry, nothing to display.', 'steroids'); ?></h1>
 		</article>
 	<?php endif; ?>
-
 	</main>
 
 <?php get_sidebar(); ?>

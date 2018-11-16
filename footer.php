@@ -2,7 +2,7 @@
 
 		<footer>
 			<p class="copyright">
-				© <?php echo date('Y'); ?> Copyright <?php bloginfo('name'); ?>.
+				© <?= date('Y') ?> Copyright <?php bloginfo('name'); ?>.
 			</p>
 		</footer>
 
