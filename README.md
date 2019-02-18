@@ -1,4 +1,4 @@
-# [Steroids](https://github.com/Buzut/steroids)
+![Steroid's logo](https://github.com/Buzut/steroids/blob/master/img/logo.jpg)
 
 Blank WordPress theme packed with modern tooling to release your creativity and productivity.
 

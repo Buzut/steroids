@@ -16,7 +16,7 @@
 		<header>
 				<div class="logo">
 					<a href="<?= home_url() ?>">
-						<img src="<?= get_template_directory_uri() ?>/img/logo.svg" alt="Logo" class="logo-img">
+						<img src="<?= get_template_directory_uri() ?>/img/logo.jpg" alt="Logo" class="logo-img">
 					</a>
 				</div>
 
