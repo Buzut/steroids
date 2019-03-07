@@ -61,6 +61,9 @@ Also, if you want to take advantage of linting from stylelint and eslint, you'll
 
 Though for the Sass guys out there, don't hesitate to fork a make a Sass version, I'll be happy to link to it.
 
+### Git
+Naming if often the hardest thing, git commits are no exception. That's why Steroids comes with a very convenient [git commit template](https://github.com/Buzut/git-emojis-hook) that should help a lot. Feel free to remove it if you don't need it!
+
 ### PHP & WordPress functions
 A handfull of pre-defined functions in `functions.php`:
 * Built-in pagination
