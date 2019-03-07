@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "The next big thing",
   "scripts": {
+    "prepare": "test -d .git && cd .git/hooks/ && curl -O https://raw.githubusercontent.com/Buzut/git-emojis-hook/master/commit-msg && curl -O https://raw.githubusercontent.com/Buzut/git-emojis-hook/master/prepare-commit-msg && chmod +x *",
     "css:build:dev": "lessc --source-map-map-inline styles/main.less styles/main.min.css",
     "css:build:prod": "lessc styles/main.less | postcss --use autoprefixer -b 'last 2 versions' | cssmin > styles/main.min.css",
     "css:watch": "nodemon -e less --watch styles -x 'npm run css:build:dev'",
