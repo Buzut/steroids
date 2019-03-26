@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "The next big thing",
   "scripts": {
-    "prepare": "test -d .git && cd .git/hooks/ && curl -O https://raw.githubusercontent.com/Buzut/git-emojis-hook/master/commit-msg && curl -O https://raw.githubusercontent.com/Buzut/git-emojis-hook/master/prepare-commit-msg && chmod +x *",
+    "prepare": "test -d .git && cd .git/hooks/ && curl -O https://raw.githubusercontent.com/Buzut/git-emojis-hook/master/commit-msg && curl -O https://raw.githubusercontent.com/Buzut/git-emojis-hook/master/prepare-commit-msg && chmod +x * || exit 0",
     "css:build:dev": "lessc --source-map-map-inline styles/main.less styles/main.min.css",
     "css:build:prod": "lessc styles/main.less | postcss --use autoprefixer -b 'last 2 versions' | cssmin > styles/main.min.css",
     "css:watch": "nodemon -e less --watch styles -x 'npm run css:build:dev'",
@@ -22,7 +22,7 @@
     "type": "git",
     "url": "xxxx.git"
   },
-  "author": "Buzut (https://buzut.fr)",
+  "author": "Buzut (https://buzut.net)",
   "devDependencies": {
     "autoprefixer": "^8.6.5",
     "babel-cli": "^6.26.0",
