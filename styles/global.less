@@ -36,6 +36,15 @@ button, input, select, textarea {
     font-size: inherit;
 }
 
+// normalize search input on webkit
+// https://css-tricks.com/webkit-html5-search-inputs/
+// http://geek.michaelgrace.org/2011/06/webkit-search-input-styling/
 input[type=search] {
-    -webkit-appearance: none;
+    -webkit-appearance: textfield;
+    -webkit-box-sizing: content-box;
+}
+
+input::-webkit-search-decoration,
+input::-webkit-search-cancel-button {
+    display: none;
 }
