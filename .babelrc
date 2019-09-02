@@ -1,25 +1,23 @@
 {
-  "env": {
-    "esm": {
-      "presets": [
-        ["env", {
-            "modules": false,
-            "targets": { "browsers": ["since 2017"] }
-        }]
-      ]
-    }
-  },
-  "env": {
-    "iife": {
-      "presets": [
-        ["env", {
-            "modules": false,
-            "targets": { "browsers": ["> 0.5%"] }
-        }]
-      ]
-    }
-  },
-  "plugins": [
-    "external-helpers"
-  ]
+    "env": {
+        "esm": {
+            "presets": [
+                ["env", {
+                    "modules": false,
+                    "targets": { "browsers": ["since 2017"] }
+                }]
+            ]
+        }
+    },
+    "env": {
+        "iife": {
+            "presets": [
+                ["env", {
+                    "modules": false,
+                    "targets": { "browsers": ["> 0.5%"] }
+                }]
+            ]
+        }
+    },
+    "plugins": ["external-helpers"]
 }
