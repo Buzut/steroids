@@ -47,13 +47,6 @@ function steroids_clean_style_tag($html, $handle, $href, $media) {
 }
 add_filter('style_loader_tag', 'steroids_clean_style_tag', 10, 4); // Convert css links to HTML5
 
-// Remove useless markup from scripts
-function steroids_clean_script_tag($input) {
-    $input = str_replace("type='text/javascript' ", '', $input);
-    return str_replace("'", '"', $input);
-}
-add_filter('script_loader_tag', 'steroids_clean_script_tag');
-
 // Remove query string from static files
 function steroids_remove_cssjs_ver($src) {
     if (strpos($src, '?ver='))
