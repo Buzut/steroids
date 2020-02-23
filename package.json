@@ -45,8 +45,5 @@
     "stylelint-high-performance-animation": "^1.2.1",
     "stylelint-no-unsupported-browser-features": "^3.0.2",
     "stylelint-order": "^0.8.1"
-  },
-  "dependencies": {
-    "nodemon": "^1.18.9"
   }
 }
