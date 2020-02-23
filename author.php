@@ -50,7 +50,7 @@
 		</article>
 	<?php endif; ?>
 
-    <?php get_template_part('pagination'); ?>
+    <?php get_template_part('templates/pagination'); ?>
 </main>
 
 <?php get_sidebar(); ?>
