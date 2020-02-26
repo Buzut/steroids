@@ -1,5 +1,7 @@
-<?php defined('ABSPATH') || exit; ?>
-<?php get_header(); ?>
+<?php
+defined('ABSPATH') || exit;
+get_header();
+?>
 
 	<main id="post-404">
 		<h1><?php _e('Page not found', 'steroids'); ?></h1>

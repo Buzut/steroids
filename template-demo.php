@@ -1,8 +1,9 @@
-<?php defined('ABSPATH') || exit; ?>
-<?php /* Template Name: Demo Page Template */ ?>
+<?php
+/* Template Name: Demo Page Template */
 
-<?php get_header(); ?>
-
+defined('ABSPATH') || exit;
+get_header();
+?>
 <main>
 	<h1><?php the_title(); ?></h1>
 

@@ -1,6 +1,7 @@
-<?php defined('ABSPATH') || exit; ?>
-<?php get_header(); ?>
-
+<?php
+defined('ABSPATH') || exit;
+get_header();
+?>
 <main>
     <h1>
         <?php _e('Tag Archive: ', 'steroids'); echo single_tag_title('', false); ?>

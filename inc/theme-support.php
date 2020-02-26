@@ -1,5 +1,5 @@
-<?php defined('ABSPATH') || exit; ?>
 <?php
+defined('ABSPATH') || exit;
 
 if (function_exists('add_theme_support')) {
     // Declare HTML5

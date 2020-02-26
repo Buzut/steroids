@@ -1,5 +1,5 @@
-<?php defined('ABSPATH') || exit; ?>
 <?php
+defined('ABSPATH') || exit;
 
 /**
  * All the functions defined below aren't called by default
