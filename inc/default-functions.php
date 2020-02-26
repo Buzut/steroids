@@ -8,9 +8,15 @@ defined('ABSPATH') || exit;
 
 function steroids_remove_jquery(&$scripts) {
     if (!is_admin()) $scripts->remove('jquery');
+
+    // If any plugin needs it, it'll load jQuery 3.3.1 (lighter and more modern that WP stock one)
+    // can be commented if jQuery won't be needed in any way
+    $scripts->add('jquery', get_template_directory_uri() . '/js/jquery.min.js', [], false);
 }
 add_filter('wp_default_scripts', 'steroids_remove_jquery');
 
+// Deactivate rarely used post embedding
+// https://wordpress.stackexchange.com/q/211701/77030
 function steroids_deregister_wp_embed() {
     wp_deregister_script('wp-embed');
 }
