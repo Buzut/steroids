@@ -17,6 +17,7 @@ function woocommerce_clean_scripts() {
 	wp_dequeue_style('woocommerce_fancybox_styles');
 	wp_dequeue_style('woocommerce_chosen_styles');
 	wp_dequeue_style('woocommerce_prettyPhoto_css');
+    wp_dequeue_style('wc-block-style');
 	wp_dequeue_script('selectWoo');
 	wp_dequeue_script('wc-add-payment-method');
 	wp_dequeue_script('wc-lost-password');
