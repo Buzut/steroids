@@ -72,12 +72,15 @@ function steroids_unset_image_sizes($sizes){
 
 // Replace src img by large image
 // prevents from keeping huge uncompressed images and eventually serving that to visitors
+// also replace auto-scaling
+// https://make.wordpress.org/core/2019/10/09/introducing-handling-of-big-images-in-wordpress-5-3/
 function steroids_replace_uploaded_image($image_data) {
+    // var_dump($image_data);
     if (!isset($image_data['sizes']['large'])) return $image_data;
 
     $upload_dir = wp_upload_dir();
-    $uploaded_image_location = $upload_dir['basedir'] . '/' .$image_data['file'];
-    $banner_image_location = $upload_dir['path'] . '/' .$image_data['sizes']['large']['file'];
+    $uploaded_image_location = $upload_dir['basedir'] . '/' . $image_data['file'];
+    $banner_image_location = $upload_dir['path'] . '/' . $image_data['sizes']['large']['file'];
 
     unlink($uploaded_image_location);
     rename($banner_image_location, $uploaded_image_location);
@@ -88,6 +91,7 @@ function steroids_replace_uploaded_image($image_data) {
 
     return $image_data;
 }
+// add_filter('big_image_size_threshold', '__return_false');
 // add_filter('wp_generate_attachment_metadata', 'steroids_replace_uploaded_image');
 
 // Insert custom image size in media gallery
