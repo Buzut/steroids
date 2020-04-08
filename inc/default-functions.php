@@ -96,7 +96,7 @@ function steroids_add_header_scripts() {
 
 
 /*------------------------------------*\
-	Hooks & filters
+    Hooks & filters
 \*------------------------------------*/
 
 // Add sensible defaults

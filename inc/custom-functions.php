@@ -17,24 +17,24 @@ function steroids_deactivate_gutenberg_css() {
 // add as many as you need and reference them in register_nav_menus ƒ below
 // https://developer.wordpress.org/reference/functions/wp_nav_menu/
 function steroids_primary_nav() {
-	wp_nav_menu([
-		'theme_location'  => 'primary',
-		'menu'            => '',
-		'container'       => 'div',
-		'container_class' => 'menu-{menu slug}-container',
-		'container_id'    => '',
-		'menu_class'      => 'menu',
-		'menu_id'         => '',
-		'echo'            => true,
-		'fallback_cb'     => 'wp_page_menu',
-		'before'          => '',
-		'after'           => '',
-		'link_before'     => '',
-		'link_after'      => '',
-		'items_wrap'      => '<ul>%3$s</ul>',
-		'depth'           => 0,
-		'walker'          => ''
-	]);
+    wp_nav_menu([
+        'theme_location'  => 'primary',
+        'menu'            => '',
+        'container'       => 'div',
+        'container_class' => 'menu-{menu slug}-container',
+        'container_id'    => '',
+        'menu_class'      => 'menu',
+        'menu_id'         => '',
+        'echo'            => true,
+        'fallback_cb'     => 'wp_page_menu',
+        'before'          => '',
+        'after'           => '',
+        'link_before'     => '',
+        'link_after'      => '',
+        'items_wrap'      => '<ul>%3$s</ul>',
+        'depth'           => 0,
+        'walker'          => ''
+    ]);
 }
 
 // Register navigation
@@ -119,7 +119,7 @@ function steroids_remove_admin_bar() {
 
 
 /*------------------------------------*\
-	Hooks & filters
+    Hooks & filters
 \*------------------------------------*/
 
 // https://developer.wordpress.org/reference/hooks/jpeg_quality/
