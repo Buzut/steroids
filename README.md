@@ -18,7 +18,7 @@ It takes great inspiration from [Frontend Boilerplate](https://github.com/Buzut/
 ## Getting Started
 Node.js and npm are used to lint, compile and minify your code (CSS & JS).
 
-In addition to these, you'll need Gzip and Brotli installed on the system to enjoy pre-compression of your assets. Gzip is already shipped with most OSes but Brotli needs an install. Nothing complicated though:
+In addition to these, you'll need Gzip and Brotli installed on the system to enjoy pre-compression of your assets. Gzip is already shipped with most OSes but Brotli often needs an install. Nothing complicated though:
 
 ```
 # Debian-like distros
@@ -39,7 +39,7 @@ Processed CSS will be outputed to `styles/main.min.css` and processed JavaScript
 * `npm run watch` to watch and automatically re-build CSS & JS during development
 * `npm run compress` to pre-compress assets into Gzip & Brotli and encode images to webP
 
-If you want to use a module from npm, just install it with `npm install xxx --save` and require it using either commonJS or ESM syntax. `npm run build` will do the rest!
+If you want to use a module from npm in your scripts, just install it with `npm install xxx --save` and require it using either commonJS or ESM syntax. `npm run build` will do the rest!
 
 Also, if you want to take advantage of linting from stylelint and eslint, you'll have to install their respective plugins in your code editor.
 
@@ -58,10 +58,10 @@ Also, if you want to take advantage of linting from stylelint and eslint, you'll
 
 ### LESS
 * Media Queries framework for instant development using `@media`
-* Stylesheet enqueued using WordPress functions into `wp_head`
 * You take advantage of all the [Less awesomeness](http://lesscss.org/)
 
-Though for the Sass guys out there, don't hesitate to fork a make a Sass version, I'll be happy to link to it.
+### SASS
+There is currently no SASS version, but it's just a few settings to modify. If you create a SASS fork, let me know, I'll be happy to link to it.
 
 ### Git
 Naming is often the hardest thing, Git commits are no exception. That's why Steroids comes with a very convenient [git commit template](https://github.com/Buzut/git-emojis-hook) that should help a lot. Feel free to remove it if you don't need it!
