@@ -4,8 +4,6 @@ Blank WordPress theme packed with modern tooling to release your creativity and 
 
 Initially based on [html5blank](http://html5blank.com), Steroids is an opinionated WordPress blank theme built for the JS developer: Less styles, ES6, ES modules, linting and npm scripts.
 
-It takes great inspiration from [Frontend Boilerplate](https://github.com/Buzut/frontend-boilerplate/) for all the CSS/JS build parts.
-
 ### What does npm do?
 * bundles & compiles ES6+ JS (served via both a `script type="module"` & a basic script for older browsers)
 * autoprefixes CSS properties that need to be
@@ -30,7 +28,7 @@ brew install brotli
 
 After downloading the theme into your WordPress `themes/` directory, all you have to do is install other dependencies through npm with `npm install` and you're good to go.
 
-Processed CSS will be outputed to `styles/main.min.css` and processed JavaScript to `scripts/main.esm.min.js` & `scripts/main.iife.min.js`.
+Processed CSS will be outputed to `styles/main-1.0.min.css` and processed JavaScript to `scripts/main.esm-1.0.min.js` & `scripts/main.iife-1.0.min.js`. The version number, `1.0` in this exemple, is defined in the package.json for easy cache invalidation.
 
 * `npm run css:build:dev` to compile less files and add sourcemaps
 * `npm run css:build:prod` to build, prefix and minify styles

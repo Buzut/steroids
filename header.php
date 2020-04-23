@@ -1,4 +1,7 @@
-<?php defined('ABSPATH') || exit; ?>
+<?php
+defined('ABSPATH') || exit;
+$assets_version = file_get_contents(__DIR__ . '/assets-version');
+?>
 <!doctype html>
 <html <?php language_attributes(); ?>>
     <head>
@@ -7,8 +10,9 @@
         <link href="<?= get_template_directory_uri() ?>/img/icons/touch.png" rel="icon">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="<?php bloginfo('description'); ?>">
-        <script async type="module" src="/js/main.esm.min.js"></script>
-        <script async nomodule src="/js/main.iife.min.js"></script>
+        <link rel="stylesheet" href="<?= get_template_directory_uri() ?>/styles/main-<?= $assets_version ?>.min.css">
+        <script async type="module" src="/js/main-<?= $assets_version ?>.esm.min.js"></script>
+        <script async nomodule src="/js/main.iife-<?= $assets_version ?>.min.js"></script>
         <?php wp_head(); ?>
     </head>
 
