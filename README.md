@@ -7,12 +7,13 @@ Initially based on [html5blank](http://html5blank.com), Steroids is an opinionat
 It takes great inspiration from [Frontend Boilerplate](https://github.com/Buzut/frontend-boilerplate/) for all the CSS/JS build parts.
 
 ### What does npm do?
-- bundles & compiles ES6+ JS (served via both a `script type="module"` & a basic script for older browsers)
-- autoprefixes CSS properties that need to be
-- builds CSS from Less files
-- enforces functional sorting of CSS properties (only in IDE's stylelint linter)
-- minifies and compresses (gz, br) CSS and JS
-- watches for files updates and run build tasks on update
+* bundles & compiles ES6+ JS (served via both a `script type="module"` & a basic script for older browsers)
+* autoprefixes CSS properties that need to be
+* builds CSS from Less files
+* enforces functional sorting of CSS properties (only in IDE's stylelint linter)
+* minifies and compresses (gz, br) CSS and JS
+* pre-compresses theme images to webP
+* watches for files updates and run build tasks on update
 
 ## Getting Started
 Node.js and npm are used to lint, compile and minify your code (CSS & JS).
@@ -31,11 +32,12 @@ After downloading the theme into your WordPress `themes/` directory, all you hav
 
 Processed CSS will be outputed to `styles/main.min.css` and processed JavaScript to `scripts/main.esm.min.js` & `scripts/main.iife.min.js`.
 
-- `npm run css:build:dev` to compile less files and add sourcemaps
-- `npm run css:build:prod` to build, prefix and minify styles
-- `npm run js:build` to compile and minify JS
-- `npm run build` to build and minify CSS & JS
-- `npm run watch` to watch and automatically re-build CSS & JS during development
+* `npm run css:build:dev` to compile less files and add sourcemaps
+* `npm run css:build:prod` to build, prefix and minify styles
+* `npm run js:build` to compile and minify JS
+* `npm run build` to build and minify CSS & JS
+* `npm run watch` to watch and automatically re-build CSS & JS during development
+* `npm run compress` to pre-compress assets into Gzip & Brotli and encode images to webP
 
 If you want to use a module from npm, just install it with `npm install xxx --save` and require it using either commonJS or ESM syntax. `npm run build` will do the rest!
 
