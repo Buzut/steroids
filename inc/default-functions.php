@@ -77,19 +77,18 @@ function steroids_remove_thumbnail_dimensions($html) {
 add_filter('post_thumbnail_html', 'steroids_remove_thumbnail_dimensions', 10); // Remove width and height dynamic attributes to thumbnails
 add_filter('image_send_to_editor', 'steroids_remove_thumbnail_dimensions', 10); // Remove width and height dynamic attributes to post images
 
-// Load styles
+// Load styles (herder.php)
 function steroids_add_styles() {
-    wp_register_style('steroids', get_template_directory_uri() . '/styles/main.min.css', [], '1.0');
-    wp_enqueue_style('steroids'); // Enqueue it!
+    wp_register_style('my-stylesheet-name', get_template_directory_uri() . '/styles/any-style.css', [], '1.0');
+    wp_enqueue_style('my-stylesheet-name'); // Enqueue it!
 }
-add_action('wp_enqueue_scripts', 'steroids_add_styles');
+// add_action('wp_enqueue_scripts', 'steroids_add_styles');
 
 // Load scripts (header.php)
-// not loaded by default because it can't use modules scripts, preferer hardcoding for module
 function steroids_add_header_scripts() {
     if ($GLOBALS['pagenow'] != 'wp-login.php' && !is_admin()) {
-        wp_register_script('mydefaultscript', get_template_directory_uri() . '/js/main.min.js', [], '1.0');
-        wp_enqueue_script('mydefaultscript');
+        wp_register_script('my-script-name', get_template_directory_uri() . '/js/any-script.js', [], '1.0');
+        wp_enqueue_script('my-script-name');
     }
 }
 // add_action('init', 'steroids_add_header_scripts');
