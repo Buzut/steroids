@@ -74,3 +74,12 @@ A handfull of pre-defined functions in `functions.php`:
 
 #### `steroids` prefix
 Functions are prefixed by `steroids_` to avoid collision. If you want to rename them, you can do so with a project wide search and replace to replace all instances of `steroids_` by the awesome name you chose.
+
+## Contributing
+There's sure room for improvement, so feel free to hack around and submit PRs!
+
+That would be cool for instance if we could have proper HTML emails. So if you have the skills to code HTML emails, don't hesitate to give me a helping hand!
+
+Please just follow the style of the existing code, which is [Airbnb's style](http://airbnb.io/javascript/) with [minor modifications](.eslintrc).
+
+To maintain things clear and visual, please follow the [Git commit template](https://github.com/Buzut/git-emojis-hook).
