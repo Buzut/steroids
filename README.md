@@ -12,7 +12,7 @@ Initially based on [html5blank](http://html5blank.com), Steroids is an opinionat
 * minifies and compresses (gz, br) CSS and JS
 * pre-compresses theme images to webP
 * watches for files updates and run build tasks on update
-* manages assets versioning via npm version (just run `npm version [major|minor|path]` to update)
+* manages assets versioning via npm version (just run `npm version [major|minor|patch]` to update)
 
 ## Getting Started
 Node.js and npm are used to lint, compile and minify your code (CSS & JS).
