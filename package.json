@@ -1,19 +1,16 @@
 {
   "name": "steroids",
-  "version": "1.1.0",
+  "version": "1.0.0",
   "description": "The next big thing",
-  "config": {
-    "assetsVersion": "1.0"
-  },
   "scripts": {
     "prepare": "test -d .git && cd .git/hooks/ && curl -O https://raw.githubusercontent.com/Buzut/git-emojis-hook/master/commit-msg && curl -O https://raw.githubusercontent.com/Buzut/git-emojis-hook/master/prepare-commit-msg && chmod +x * || exit 0",
-    "css:build:dev": "lessc --source-map-map-inline styles/main.less styles/main-$npm_package_config_assetsVersion.min.css",
-    "css:build:prod": "lessc styles/main.less | postcss --use autoprefixer -b 'last 2 versions' | cssmin > styles/main-$npm_package_config_assetsVersion.min.css",
+    "css:build:dev": "lessc --source-map-map-inline styles/main.less styles/main-$npm_package_version.min.css",
+    "css:build:prod": "lessc styles/main.less | postcss --use autoprefixer -b 'last 2 versions' | cssmin > styles/main-$npm_package_version.min.css",
     "css:watch": "nodemon -e less --watch styles -x 'npm run css:build:dev'",
-    "js:esmbuild": "BABEL_ENV=esm assetsVersion=$npm_package_config_assetsVersion rollup --config",
-    "js:iifebuild": "BABEL_ENV=iife assetsVersion=$npm_package_config_assetsVersion rollup --config",
+    "js:esmbuild": "BABEL_ENV=esm rollup --config",
+    "js:iifebuild": "BABEL_ENV=iife rollup --config",
     "js:build": "npm run js:esmbuild && npm run js:iifebuild",
-    "js:watch": "BABEL_ENV=esm assetsVersion=$npm_package_config_assetsVersion rollup --config --watch",
+    "js:watch": "BABEL_ENV=esm rollup --config --watch",
     "compress:gz": "find . -path './node_modules' -prune -o ! -name rollup.config.js \\( -name '*.svg' -o -name '*.js' -o -name '*.css' \\) -exec gzip -9 -k -f '{}' \\;",
     "compress:br": "find . -path './node_modules' -prune -o ! -name rollup.config.js \\( -name '*.svg' -o -name '*.js' -o -name '*.css' \\) -exec brotli -Zf '{}' \\;",
     "compress:img": "find . \\( -name '*.jpg' -o -name '*.jpeg' -o -name '*.png' \\) -exec bash -c 'imagemin -p=webp $1 > $1.webp' _ {} \\;",

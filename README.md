@@ -12,6 +12,7 @@ Initially based on [html5blank](http://html5blank.com), Steroids is an opinionat
 * minifies and compresses (gz, br) CSS and JS
 * pre-compresses theme images to webP
 * watches for files updates and run build tasks on update
+* manages assets versioning via npm version (just run `npm version [major|minor|path]` to update)
 
 ## Getting Started
 Node.js and npm are used to lint, compile and minify your code (CSS & JS).
@@ -28,7 +29,7 @@ brew install brotli
 
 After downloading the theme into your WordPress `themes/` directory, all you have to do is install other dependencies through npm with `npm install` and you're good to go.
 
-Processed CSS will be outputed to `styles/main-1.0.min.css` and processed JavaScript to `scripts/main.esm-1.0.min.js` & `scripts/main.iife-1.0.min.js`. The version number, `1.0` in this exemple, is defined in the package.json for easy cache invalidation.
+Processed CSS will be outputed to `styles/main-1.0.min.css` and processed JavaScript to `scripts/main.esm-1.0.0.min.js` & `scripts/main.iife-1.0.0.min.js`. The version number, `1.0.0` in this exemple, is defined via native npm versioning (set via command line or in package.json) for easy cache invalidation.
 
 * `npm run css:build:dev` to compile less files and add sourcemaps
 * `npm run css:build:prod` to build, prefix and minify styles
@@ -66,6 +67,7 @@ Naming is often the hardest thing, Git commits are no exception. That's why Ster
 
 ### PHP & WordPress functions
 A handfull of pre-defined functions in `functions.php`:
+
 * Built-in pagination
 * Image optimisation built-in
 * And many more, just take a look at [functions.php](functions.php)
