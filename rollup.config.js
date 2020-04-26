@@ -8,7 +8,7 @@ const esm = {
     output: {
         format: 'es',
         sourcemap: true,
-        file: `js/main.esm-${process.env.npm_package_version}.min.js`
+        file: `js/main-${process.env.npm_package_version}.esm.min.js`
     },
     plugins: [
         commonjs(),
@@ -22,7 +22,7 @@ const iife = {
     input: 'js/main.js',
     output: {
         format: 'iife',
-        file: `js/main.iife-${process.env.npm_package_version}.min.js`,
+        file: `js/main-${process.env.npm_package_version}.iife.min.js`,
         name: 'steroids'
     },
     plugins: [
