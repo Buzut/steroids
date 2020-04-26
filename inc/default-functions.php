@@ -11,7 +11,7 @@ function steroids_remove_jquery(&$scripts) {
 
     // If any plugin needs it, it'll load jQuery 3.3.1 (lighter and more modern that WP stock one)
     // can be commented if jQuery won't be needed in any way
-    $scripts->add('jquery', get_template_directory_uri() . '/js/jquery.min.js', [], false);
+    $scripts->add('jquery', get_template_directory_uri() . '/scripts/jquery.js', [], false);
 }
 add_filter('wp_default_scripts', 'steroids_remove_jquery');
 
@@ -87,7 +87,7 @@ function steroids_add_styles() {
 // Load scripts (header.php)
 function steroids_add_header_scripts() {
     if ($GLOBALS['pagenow'] != 'wp-login.php' && !is_admin()) {
-        wp_register_script('my-script-name', get_template_directory_uri() . '/js/any-script.js', [], '1.0');
+        wp_register_script('my-script-name', get_template_directory_uri() . '/scripts/any-script.js', [], '1.0');
         wp_enqueue_script('my-script-name');
     }
 }

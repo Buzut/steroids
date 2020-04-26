@@ -4,11 +4,11 @@ import babel from 'rollup-plugin-babel';
 import { terser } from 'rollup-plugin-terser';
 
 const esm = {
-    input: 'js/main.js',
+    input: 'scripts/main.js',
     output: {
         format: 'es',
         sourcemap: true,
-        file: `js/main-${process.env.npm_package_version}.esm.min.js`
+        file: `scripts/main-${process.env.npm_package_version}.esm.min.js`
     },
     plugins: [
         commonjs(),
@@ -19,10 +19,10 @@ const esm = {
 };
 
 const iife = {
-    input: 'js/main.js',
+    input: 'scripts/main.js',
     output: {
         format: 'iife',
-        file: `js/main-${process.env.npm_package_version}.iife.min.js`,
+        file: `scripts/main-${process.env.npm_package_version}.iife.min.js`,
         name: 'steroids'
     },
     plugins: [
