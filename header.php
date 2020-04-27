@@ -6,7 +6,6 @@ $assets_version = file_get_contents(__DIR__ . '/assets-version');
 <html <?php language_attributes(); ?>>
     <head>
         <meta charset="<?php bloginfo('charset'); ?>">
-        <title><?php wp_title(''); ?><?php if (wp_title('', false)) { echo ' :'; } ?> <?php bloginfo('name'); ?></title>
         <link href="<?= get_template_directory_uri() ?>/img/icons/touch.png" rel="icon">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="<?php bloginfo('description'); ?>">
