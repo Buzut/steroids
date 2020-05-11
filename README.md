@@ -69,6 +69,7 @@ Naming is often the hardest thing, Git commits are no exception. That's why Ster
 A handfull of pre-defined functions in `functions.php`:
 
 * Built-in pagination
+* Markdown rendering function to render Markdown in templates
 * Image optimisation built-in
 * And many more, just take a look at [functions.php](functions.php)
 
