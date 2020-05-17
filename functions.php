@@ -14,6 +14,7 @@ defined('ABSPATH') || exit;
 
 require 'inc/default-functions.php';
 require 'inc/custom-functions.php';
+require 'inc/template-functions.php';
 // require 'inc/woocommerce-functions.php'; // include WooCommerce ƒ file if needed
 
 // Theme support
