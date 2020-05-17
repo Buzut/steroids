@@ -6,14 +6,16 @@ defined('ABSPATH') || exit;
  * you can disable them by commenting their hooks/filters
  */
 
-function steroids_remove_jquery(&$scripts) {
+// Use a more recent version of jQuery than the stock one & get rid of jQuery migrate
+// This jQuery will be loaded only if needed by a plugin
+function steroids_upgrade_jquery(&$scripts) {
     if (!is_admin()) $scripts->remove('jquery');
 
     // If any plugin needs it, it'll load jQuery 3.3.1 (lighter and more modern that WP stock one)
     // can be commented if jQuery won't be needed in any way
     $scripts->add('jquery', get_template_directory_uri() . '/scripts/jquery.js', [], false);
 }
-add_filter('wp_default_scripts', 'steroids_remove_jquery');
+add_filter('wp_default_scripts', 'steroids_upgrade_jquery');
 
 // Deactivate rarely used post embedding
 // https://wordpress.stackexchange.com/q/211701/77030
