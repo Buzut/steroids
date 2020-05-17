@@ -117,6 +117,19 @@ function steroids_remove_admin_bar() {
 }
 // add_filter('show_admin_bar', 'steroids_remove_admin_bar');
 
+// Hide ACF admin menu
+function hide_acf_menu() {
+    // Allow only for first signup user
+    // return get_current_user_id() === 1;
+    
+    // Allow for all admins
+    // return current_user_can('manage_options');
+    
+    // Return false to hide for everyone
+    return false;
+}
+// add_filter('acf/settings/show_admin', hide_acf_menu);
+
 
 /*------------------------------------*\
     Hooks & filters
