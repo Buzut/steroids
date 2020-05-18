@@ -15,7 +15,7 @@
     "compress:br": "find . -path './node_modules' -prune -o ! -name rollup.config.js \\( -name '*.svg' -o -name '*.js' -o -name '*.css' \\) -exec brotli -Zf '{}' \\;",
     "compress:img": "find . \\( -name '*.jpg' -o -name '*.jpeg' -o -name '*.png' \\) -exec bash -c 'imagemin -p=webp $1 > $1.webp' _ {} \\;",
     "compress": "npm run compress:gz && npm run compress:br && npm run compress:img",
-    "generateAssetsVersionFile": "echo $npm_package_config_assetsVersion > assets-version",
+    "generateAssetsVersionFile": "echo npm_package_version > assets-version",
     "clean:build": "find . -path './node_modules' -prune -o \\( -name '*.min.css' -o -name '*.min.js' -o -name '*.map' \\) -exec rm '{}' \\;",
     "clean:compress": "find . -path './node_modules' -prune -o \\( -name '*.gz' -o -name '*.br' \\) -exec rm '{}' \\;",
     "clean:all": "npm run clean:build && npm run clean:compress",
