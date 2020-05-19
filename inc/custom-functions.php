@@ -111,20 +111,14 @@ function steroids_view_article($more) {
 }
 // add_filter('excerpt_more', 'steroids_view_article');
 
-// Remove Admin bar
-function steroids_remove_admin_bar() {
-    return false;
-}
-// add_filter('show_admin_bar', 'steroids_remove_admin_bar');
-
 // Hide ACF admin menu
 function hide_acf_menu() {
     // Allow only for first signup user
     // return get_current_user_id() === 1;
-    
+
     // Allow for all admins
     // return current_user_can('manage_options');
-    
+
     // Return false to hide for everyone
     return false;
 }
@@ -139,3 +133,4 @@ function hide_acf_menu() {
 // add_filter('jpeg_quality', function($arg){ return 50; }); // How to compress images
 // add_filter('wp_calculate_image_srcset_meta', '__return_null'); // Remove srcset
 // add_filter('user_can_richedit' , '__return_false', 50); // remove visual editor
+// add_filter('show_admin_bar', '__return_false'); // Remove Admin bar
