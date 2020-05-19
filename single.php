@@ -29,9 +29,7 @@ get_header();
             <p><?php _e('Categorised in: ', 'steroids'); the_category(', '); // Separated by commas ?></p>
             <p><?php _e('This post was written by ', 'steroids'); the_author(); ?></p>
 
-            <?php edit_post_link(); // Always handy to have Edit Post Links available ?>
             <?php comments_template(); ?>
-
         </article>
     <?php endwhile; ?>
 

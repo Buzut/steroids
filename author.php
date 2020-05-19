@@ -41,7 +41,6 @@ get_header();
                 <!-- /post details -->
 
                 <?php the_excerpt(); ?>
-                <?php edit_post_link(); ?>
             </article>
         <?php endwhile; ?>
 

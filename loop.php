@@ -22,7 +22,6 @@ if (have_posts()): while (have_posts()) : the_post();
         <!-- /post details -->
 
         <?php the_excerpt(); ?>
-        <?php edit_post_link(); ?>
     </article>
 <?php endwhile; ?>
 
