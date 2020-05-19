@@ -11,7 +11,7 @@ defined('ABSPATH') || exit;
 function steroids_upgrade_jquery(&$scripts) {
     if (!is_admin()) $scripts->remove('jquery');
 
-    // If any plugin needs it, it'll load jQuery 3.3.1 (lighter and more modern that WP stock one)
+    // If any plugin needs it, it'll load jQuery 3.5.1 (lighter and more modern that WP stock one)
     // can be commented if jQuery won't be needed in any way
     $scripts->add('jquery', get_template_directory_uri() . '/scripts/jquery.js', [], false);
 }

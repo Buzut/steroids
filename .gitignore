@@ -1,4 +1,5 @@
 .DS_Store
+jquery
 node_modules/
 assets-version
 *.min.css
