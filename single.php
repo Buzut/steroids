@@ -35,7 +35,7 @@ get_header();
 
     <?php else: ?>
         <article>
-            <h1><?php _e('Sorry, nothing to display.', 'steroids'); ?></h1>
+            <h1><?= __('Sorry, nothing to display.', 'steroids') ?></h1>
         </article>
     <?php endif; ?>
 </main>

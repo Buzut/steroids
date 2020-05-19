@@ -10,7 +10,7 @@ get_header();
         </h1>
 
         <?php if (get_the_author_meta('description')) : ?>
-            <?php echo get_avatar(get_the_author_meta('user_email')); ?>
+            <?= get_avatar(get_the_author_meta('user_email')) ?>
 
             <h2>
                 <?php _e('About ', 'steroids'); echo get_the_author() ; ?>
