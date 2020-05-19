@@ -8,6 +8,7 @@
     "rules": {
         "declaration-empty-line-before": null,
         "indentation": 4,
+        "no-descending-specificity": null,
         "number-leading-zero": "never",
         "plugin/no-low-performance-animation-properties": [true, { ignore: "paint-properties", "severity": "warning" }],
         "plugin/no-unsupported-browser-features": [true, {
