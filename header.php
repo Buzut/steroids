@@ -10,8 +10,8 @@ $assets_version = file_get_contents(__DIR__ . '/assets-version');
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="<?php bloginfo('description'); ?>">
         <link rel="stylesheet" href="<?= get_template_directory_uri() ?>/styles/main-<?= $assets_version ?>.min.css">
-        <script async type="module" src="/scripts/main-<?= $assets_version ?>.esm.min.js"></script>
-        <script async nomodule src="/scripts/main.iife-<?= $assets_version ?>.min.js"></script>
+        <script async type="module" src="<?= get_template_directory_uri() ?>/scripts/main-<?= $assets_version ?>.esm.min.js"></script>
+        <script async nomodule src="<?= get_template_directory_uri() ?>/scripts/main.iife-<?= $assets_version ?>.min.js"></script>
         <?php wp_head(); ?>
     </head>
 
