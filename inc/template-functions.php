@@ -16,6 +16,13 @@ function steroids_pagination() {
     ]);
 }
 
+// Custom View Article link to Post
+function steroids_view_article($more) {
+    global $post;
+    return '… <a class="view-article" href="' . get_permalink($post->ID) . '">' . __('View Article', 'steroids') . '</a>';
+}
+// add_filter('excerpt_more', 'steroids_view_article');
+
 // If posts (or anything) are saved in Md, this ƒn will convert it into HTML
 // To be used with get_the_content (for posts/pages) because the_content echoes instead of returning
 // Alse be carefull because the_content doesn't any sanitisation (you can apply them later on if required)
