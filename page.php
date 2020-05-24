@@ -1,5 +1,7 @@
-<?php defined('ABSPATH') || exit; ?>
-<?php get_header(); ?>
+<?php
+defined('ABSPATH') || exit;
+get_header();
+?>
 
 <main id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
     <h1><?php the_title(); ?></h1>
