@@ -30,6 +30,6 @@ function steroids_parse_markdown($content, $echo = false) {
     $Parsedown = require_once 'Parsedown.php';
     $Parsedown = new Parsedown();
 
-    if ($echo) echo $Parsedown->text($content);
-    return $Parsedown->text($content);
+    if ($echo) echo $Parsedown->text(wptexturize($content));
+    return $Parsedown->text(wptexturize($content));
 }
