@@ -59,19 +59,3 @@ function steroids_remove_dns_prefetch($hints, $relation_type) {
     return $hints;
 }
 add_filter('wp_resource_hints', 'steroids_remove_dns_prefetch', 10, 2);
-
-// Remove thumbnail width and height dimensions that prevent fluid images in the_thumbnail
-function steroids_remove_thumbnail_dimensions($html) {
-    $html = preg_replace('/(width|height)=\"\d*\"\s/', "", $html);
-    return $html;
-}
-add_filter('post_thumbnail_html', 'steroids_remove_thumbnail_dimensions', 10); // Remove width and height dynamic attributes to thumbnails
-add_filter('image_send_to_editor', 'steroids_remove_thumbnail_dimensions', 10); // Remove width and height dynamic attributes to post images
-
-/*------------------------------------*\
-    Hooks & filters
-\*------------------------------------*/
-
-// Remove annoying default
-
-

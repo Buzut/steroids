@@ -6,6 +6,14 @@ add_image_size('medium', 250, '', true); // Medium Thumbnail
 add_image_size('small', 120, '', true); // Small Thumbnail
 // add_image_size('custom-size', 700, 200, true); // Custom Thumbnail Size call using the_post_thumbnail('custom-size');
 
+// Remove thumbnail width and height dimensions that prevent fluid images in the_thumbnail
+function steroids_remove_thumbnail_dimensions($html) {
+    $html = preg_replace('/(width|height)=\"\d*\"\s/', "", $html);
+    return $html;
+}
+add_filter('post_thumbnail_html', 'steroids_remove_thumbnail_dimensions', 10); // Remove width and height dynamic attributes to thumbnails
+add_filter('image_send_to_editor', 'steroids_remove_thumbnail_dimensions', 10); // Remove width and height dynamic attributes to post images
+
 // Remove image sizes that won't be used to save server space
 // comment what you want to keep
 function steroids_unset_image_sizes($sizes){
