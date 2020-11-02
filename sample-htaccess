@@ -81,6 +81,9 @@ ExpiresDefault "access plus 1 month"
 Header unset ETag
 FileETag None
 
+# Add x-frame security header
+Header set X-Frame-Options "DENY"
+
 # Rewrite engine ignition
 RewriteEngine on
 RewriteBase /
