@@ -2,9 +2,9 @@
     "env": {
         "esm": {
             "presets": [
-                ["env", {
+                ["@babel/preset-env", {
                     "modules": false,
-                    "targets": { "browsers": ["since 2017"] }
+                    "targets": { "browsers": ["since 2018"] }
                 }]
             ]
         }
@@ -12,12 +12,11 @@
     "env": {
         "iife": {
             "presets": [
-                ["env", {
+                ["@babel/preset-env", {
                     "modules": false,
                     "targets": { "browsers": ["> 0.5%"] }
                 }]
             ]
         }
-    },
-    "plugins": ["external-helpers"]
+    }
 }
