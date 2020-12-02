@@ -17,16 +17,6 @@ Initially based on [html5blank](http://html5blank.com), Steroids is an opinionat
 ## Getting Started
 Node.js and npm are used to lint, compile and minify your code (CSS & JS).
 
-In addition to these, you'll need Gzip and Brotli installed on the system to enjoy pre-compression of your assets. Gzip is already shipped with most OSes but Brotli often needs an install. Nothing complicated though:
-
-```
-# Debian-like distros
-apt install brotli
-
-# macOS
-brew install brotli
-```
-
 After downloading the theme into your WordPress `themes/` directory, all you have to do is install other dependencies through npm with `npm install` and you're good to go.
 
 Processed CSS will be outputed to `styles/main-1.0.min.css` and processed JavaScript to `scripts/main.esm-1.0.0.min.js` & `scripts/main.iife-1.0.0.min.js`. The version number, `1.0.0` in this exemple, is defined via native npm versioning (set via command line or in package.json) for easy cache invalidation.
@@ -55,12 +45,12 @@ Also, if you want to take advantage of linting from stylelint and eslint, you'll
 * Possibility to use CommonJS & ESM modules (Rollup)
 * Two JS builds: one as an ES6 module and the second one as a normal script. This allows for best performance and compatibility with the widest range of browsers as [Google explains](https://developers.google.com/web/fundamentals/primers/modules).
 
-### LESS
+### Less
 * Media Queries framework for instant development using `@media`
 * You take advantage of all the [Less awesomeness](http://lesscss.org/)
 
-### SASS
-There is currently no SASS version, but it's just a few settings to modify. If you create a SASS fork, let me know, I'll be happy to link to it.
+### Sass
+There is currently no Sass version, but it's just a few settings to modify. If you create a Sass fork, let me know, I'll be happy to link to it.
 
 ### Git
 Naming is often the hardest thing, Git commits are no exception. That's why Steroids comes with a very convenient [git commit template](https://github.com/Buzut/git-emojis-hook) that should help a lot. Feel free to remove it if you don't need it!
@@ -72,6 +62,9 @@ A handfull of pre-defined functions in `functions.php`:
 * Markdown rendering function to render Markdown in templates
 * Image optimisation built-in
 * And many more, just take a look at [functions.php](functions.php)
+
+### Assets pre-compression
+CSS, JavaScript and SVG files are pre-compressed in both Brotli and Gzip so that your webserver will be able to server better compressed files even faster!
 
 #### `steroids` prefix
 Functions are prefixed by `steroids_` to avoid collision. If you want to rename them, you can do so with a project wide search and replace to replace all instances of `steroids_` by the awesome name you chose.
