@@ -1,6 +1,20 @@
 <?php
 defined('ABSPATH') || exit;
 
+// Hide update notif
+function steroids_hide_updates() {
+    global $wp_version;
+    return(object) ['last_checked' => time(), 'version_checked' => $wp_version];
+}
+
+// Activate the hide updates ƒn for all users but the first registered one
+// Remove the condition if you want to hide them for all users
+// if (get_current_user_id() !== 1) {
+//     add_filter('pre_site_transient_update_core', 'remove_core_updates'); // hide updates for WordPress itself
+//     add_filter('pre_site_transient_update_plugins', 'remove_core_updates'); // hide updates for all plugins
+//     add_filter('pre_site_transient_update_themes', 'remove_core_updates'); // hide updates for all themes
+// }
+
 // Hide comments from admin sidebar
 // add_action('admin_menu', function () {
 //     remove_menu_page('edit-comments.php');
