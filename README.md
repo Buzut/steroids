@@ -56,7 +56,7 @@ There is currently no Sass version, but it's just a few settings to modify. If y
 Naming is often the hardest thing, Git commits are no exception. That's why Steroids comes with a very convenient [git commit template](https://github.com/Buzut/git-emojis-hook) that should help a lot. Feel free to remove it if you don't need it!
 
 ### PHP & WordPress functions
-A handfull of pre-defined functions in `functions.php`:
+A handfull of pre-defined functions:
 
 * Built-in pagination
 * Markdown rendering function to render Markdown in templates
@@ -68,6 +68,23 @@ CSS, JavaScript and SVG files are pre-compressed in both Brotli and Gzip so that
 
 #### `steroids` prefix
 Functions are prefixed by `steroids_` to avoid collision. If you want to rename them, you can do so with a project wide search and replace to replace all instances of `steroids_` by the awesome name you chose.
+
+## Performance & junk removal
+This theme used to do a lot to remove "junk" WordPress defaults. It still does a few things but in the end, this is better managed by a third party plugin.
+
+In addition to remove useless stylesheets, JavaScript files and markup added by WordPress and plugins alike, one thing that can really boost load times & general performance is to unload plugins alltogether when they are not needed. You save MySQL queries, PHP processing time and polar bears 🐻‍❄️ at the same time!
+
+Seriously, a lot of plugins are of no use on most pages:
+* a form plugin running its logic, loading its styles and JS on **every page**,
+* an image optimisation plugin that isn't meant for frontend but still loads on every request?
+
+**#WTF don't you think?**
+
+For that very reason, I use [Asset CleanUp Pro](https://shareasale.com/r.cfm?b=1448730&u=2800929&m=92973&urllink=&afftrack=) on every site I build. It allows you to unload any core, theme and plugin CSS/JS site-wide or on a per-page basis. It also allows you to completely control when a plugin executes its PHP code.
+
+There's more, it allows you to remove all useless WordPress styles, assets and markup (like image emojis, comments RSS feed etc).
+
+Note: if you buy the plugin via the previous link, It'll buy me a coffe. That will help support my work. Also, there is a [free version](https://wordpress.org/plugins/wp-asset-clean-up/) that's nice too if you don't need the features of the Pro version.
 
 ## Contributing
 There's sure room for improvement, so feel free to hack around and submit PRs!
