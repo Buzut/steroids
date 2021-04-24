@@ -12,7 +12,31 @@ function steroids_upgrade_jquery(&$scripts) {
 }
 add_filter('wp_default_scripts', 'steroids_upgrade_jquery');
 
-// Load styles (herder.php)
+// Convert css links to HTML5
+function steroids_clean_style_tag($html, $handle, $href, $media) {
+    $stripped_type = str_replace(" type='text/css'", '', $html);
+    $stripped_id = str_replace( " id='$handle-css' ", '', $stripped_type);
+    return str_replace(" media='all' /", '', $stripped_id);
+}
+add_filter('style_loader_tag', 'steroids_clean_style_tag', 10, 4); // Convert css links to HTML5
+
+// Remove query string from static files
+function steroids_remove_cssjs_ver($src) {
+    if (strpos($src, '?ver='))
+    $src = remove_query_arg('ver', $src);
+    return $src;
+}
+add_filter('style_loader_src', 'steroids_remove_cssjs_ver', 10, 2);
+add_filter('script_loader_src', 'steroids_remove_cssjs_ver', 10, 2);
+
+// Remove counter-productive auto dns prefetch
+function steroids_remove_dns_prefetch($hints, $relation_type) {
+    if ('dns-prefetch' === $relation_type) return array_diff(wp_dependencies_unique_hosts(), $hints);
+    return $hints;
+}
+add_filter('wp_resource_hints', 'steroids_remove_dns_prefetch', 10, 2);
+
+// Load styles (header.php)
 function steroids_add_styles() {
     wp_register_style('my-stylesheet-name', get_template_directory_uri() . '/styles/any-style.css', [], '1.0');
     wp_enqueue_style('my-stylesheet-name'); // Enqueue it!

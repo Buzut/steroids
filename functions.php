@@ -11,7 +11,6 @@ defined('ABSPATH') || exit;
  */
 
 require 'inc/theme-support.php';
-require 'inc/default-functions.php';
 require 'inc/assets-management.php';
 require 'inc/image-management.php';
 require 'inc/navigation.php';
@@ -19,3 +18,5 @@ require 'inc/sidebar.php';
 require 'inc/admin.php';
 require 'inc/templates.php';
 // require 'inc/woocommerce.php'; // include WooCommerce ƒ file if needed
+
+// add_filter('auto_update_plugin', '__return_true'); // Auto update plugins
