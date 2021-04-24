@@ -25,6 +25,28 @@ function steroids_unset_image_sizes($sizes){
 }
 // add_filter('intermediate_image_sizes_advanced', 'steroids_unset_image_sizes');
 
+// Replace all non ASCII chars from media names
+// https://wpartisan.me/tutorials/rename-clean-wordpress-media-filenames
+add_filter('sanitize_file_name', function ($filename) {
+    $sanitized_filename = remove_accents($filename); // Convert to ASCII
+
+    // Standard replacements
+    $invalid = [
+        ' '   => '-',
+        '%20' => '-',
+        '_'   => '-',
+    ];
+    $sanitized_filename = str_replace(array_keys($invalid), array_values($invalid), $sanitized_filename);
+
+    $sanitized_filename = preg_replace('/[^A-Za-z0-9-\. ]/', '', $sanitized_filename); // Remove all non-alphanumeric except .
+    $sanitized_filename = preg_replace('/\.(?=.*\.)/', '', $sanitized_filename); // Remove all but last .
+    $sanitized_filename = preg_replace('/-+/', '-', $sanitized_filename); // Replace any more than one - in a row
+    $sanitized_filename = str_replace('-.', '.', $sanitized_filename); // Remove last - if at the end
+    $sanitized_filename = strtolower($sanitized_filename); // Lowercase
+
+    return $sanitized_filename;
+}, 10, 1);
+
 // Replace src img by large image
 // prevents from keeping huge uncompressed images and eventually serving that to visitors
 // also replace auto-scaling
