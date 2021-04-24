@@ -63,11 +63,16 @@ A handfull of pre-defined functions:
 * Image optimisation built-in
 * And many more, just take a look at [functions.php](functions.php)
 
+#### `steroids` prefix
+Functions are prefixed by `steroids_` to avoid collision. If you want to rename them, you can do so with a project wide search and replace to replace all instances of `steroids_` by the awesome name you chose.
+
 ### Assets pre-compression
 CSS, JavaScript and SVG files are pre-compressed in both Brotli and Gzip so that your webserver will be able to server better compressed files even faster!
 
-#### `steroids` prefix
-Functions are prefixed by `steroids_` to avoid collision. If you want to rename them, you can do so with a project wide search and replace to replace all instances of `steroids_` by the awesome name you chose.
+### One line npm deploy
+As everyone knows, `npm` is a powerfull tool. So why not take advantage of it for casual deploys? There's a sweet `deploy` command built in that simply relies on rsync to sync your local theme to your server.
+
+To take advantage of it, just replace `YOUR_SERVER` in the npm scripts section by your server's ssh info and you're good to go!
 
 ## Performance & junk removal
 This theme used to do a lot to remove "junk" WordPress defaults. It still does a few things but in the end, this is better managed by a third party plugin.
