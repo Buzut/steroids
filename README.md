@@ -32,11 +32,20 @@ If you want to use a module from npm in your scripts, just install it with `npm 
 
 Also, if you want to take advantage of linting from stylelint and eslint, you'll have to install their respective plugins in your code editor.
 
-### One line install
+### One command install
 This one-liner installs WordPress with the Steroids theme.
 
 ```bash
-bash -c "$(curl -fsS https://github.com/Buzut/steroids/blob/master/install.sh) <dbname> <title> <url> <admin_user> <admin_passwd> <admin_email> [<locale (defaults to en_US)>] [<mysql user (defaults to root)>] [<mysql password (defaults to empty)>"
+curl -fsS https://raw.githubusercontent.com/Buzut/steroids/master/install.sh | bash -s \
+<dbname> \
+<title> \
+<url> \
+<admin_user> \
+<admin_passwd> \
+<admin_email> \
+[<locale (defaults to en_US)>] \
+[<mysql user (defaults to root)>] \
+[<mysql password (defaults to empty)>]
 ```
 
 This executes the [install script](install.sh) that will:
