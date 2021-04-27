@@ -10,6 +10,7 @@ defined('ABSPATH') || exit;
  * it doesn't allow to load both module & legacy script tag. It is instead hardcoded.
  */
 
+require 'inc/theme-settings.php';
 require 'inc/theme-support.php';
 require 'inc/assets-management.php';
 require 'inc/image-management.php';

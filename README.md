@@ -83,7 +83,7 @@ A handfull of pre-defined functions:
 * Built-in pagination
 * Markdown rendering function to render Markdown in templates
 * Image optimisation built-in
-* And many more, just take a look at [functions.php](functions.php)
+* And many more, just take a look at [config.php](config.php) & [inc/](inc/)
 
 #### `steroids` prefix
 Functions are prefixed by `steroids_` to avoid collision. If you want to rename them, you can do so with a project wide search and replace to replace all instances of `steroids_` by the awesome name you chose.
