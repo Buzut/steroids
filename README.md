@@ -32,6 +32,19 @@ If you want to use a module from npm in your scripts, just install it with `npm 
 
 Also, if you want to take advantage of linting from stylelint and eslint, you'll have to install their respective plugins in your code editor.
 
+### One line install
+This one-liner installs WordPress with the Steroids theme.
+
+```bash
+bash -c "$(curl -fsS https://github.com/Buzut/steroids/blob/master/install.sh) <dbname> <title> <url> <admin_user> <admin_passwd> <admin_email> [<locale (defaults to en_US)>] [<mysql user (defaults to root)>] [<mysql password (defaults to empty)>"
+```
+
+This executes the [install script](install.sh) that will:
+* create the database for the project,
+* download a new WordPress directory in your current directory,
+* set up WordPress admin user, email and password, project name and url,
+* finally install Steroids theme and remove default themes.
+
 ## Features
 
 ### HTML5
