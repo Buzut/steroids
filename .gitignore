@@ -1,9 +1,9 @@
 .DS_Store
 jquery.js
 node_modules/
+build/
 assets-version
 *.min.css
-*.min.js
 *.map
 *.br
 *.gz

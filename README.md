@@ -1,25 +1,25 @@
 ![Steroid's logo](https://github.com/Buzut/steroids/blob/master/img/logo.jpg)
 
-Blank WordPress theme packed with modern tooling to release your creativity and productivity.
+# World's most advanced theme for frontend developers
+WordPress starter theme packed with modern tooling to make your life easier and your code more efficient.
+Steroids is an opinionated WordPress starter theme built for frontend & JS developers: one command install, Less styles, ES6, ES modules, linting,  npm deploy command and much more…
 
-Initially based on [html5blank](http://html5blank.com), Steroids is an opinionated WordPress blank theme built for the JS developer: Less styles, ES6, ES modules, linting and npm scripts.
-
-### What does npm do?
-* bundles & compiles ES6+ JS (served via both a `script type="module"` & a basic script for older browsers)
-* autoprefixes CSS properties that need to be
-* builds CSS from Less files
-* enforces functional sorting of CSS properties (only in IDE's stylelint linter)
-* minifies and compresses (gz, br) CSS and JS
-* pre-compresses theme images to webP
-* watches for files updates and run build tasks on update
-* manages assets versioning via npm version (just run `npm version [major|minor|patch]` to update)
+### What's in it?
+* bundles & compiles ES6+ JS (served via both a `script type="module"` & a basic script for older browsers) 📦
+* ready for JS tree shaking & code spliting (conditional loading & dynamic imports) 🚀
+* bundles styles & autoprefixes CSS properties that need to be 💄
+* enforces clean JS code & functional sorting of CSS properties (only in IDE's) 💅
+* minifies and compresses (gzip & brotli) CSS and JS 🏗
+* pre-compresses theme images to webP 🔥
+* watches for files updates and run build tasks on update ⚙️
+* manages assets versioning via npm version (just run `npm version [major|minor|patch]` to update) ⏰
 
 ## Getting Started
 Node.js and npm are used to lint, compile and minify your code (CSS & JS).
 
 After downloading the theme into your WordPress `themes/` directory, all you have to do is install other dependencies through npm with `npm install` and you're good to go.
 
-Processed CSS will be outputed to `styles/main-1.0.min.css` and processed JavaScript to `scripts/main.esm-1.0.0.min.js` & `scripts/main.iife-1.0.0.min.js`. The version number, `1.0.0` in this exemple, is defined via native npm versioning (set via command line or in package.json) for easy cache invalidation.
+Processed CSS will be outputed to `styles/main-1.0.min.css` and processed JavaScript to `scripts/build/main-1.0.0.js` & `scripts/build/main-1.0.0.iife.js`. The version number, `1.0.0` in this exemple, is defined via native npm versioning (set via command line or in package.json) for easy cache invalidation.
 
 * `npm run css:build:dev` to compile less files and add sourcemaps
 * `npm run css:build:prod` to build, prefix and minify styles
@@ -64,8 +64,37 @@ This executes the [install script](install.sh) that will:
 
 ### JavaScript
 * ES6 setup, ready to use the latest features (Babel)
-* Possibility to use CommonJS & ESM modules (Rollup)
-* Two JS builds: one as an ES6 module and the second one as a normal script. This allows for best performance and compatibility with the widest range of browsers as [Google explains](https://developers.google.com/web/fundamentals/primers/modules).
+* Possibility to use CommonJS & ESM modules with [Tree Shaking](https://en.wikipedia.org/wiki/Tree_shaking) (Rollup)
+* Powerfull DOM based routing (you can load some JS files on certain pages only)
+* Two JS builds: one as an ES6 module and the second one as a normal script. This allows for best performance and compatibility with the widest range of browsers as [Google explains](https://developers.google.com/web/fundamentals/primers/modules)
+
+#### JS conditional loading
+You know that speed is everything for the UX and the SEO of your site. So why load one big JS file on all pages when you can target just the amount of JS required on a given page? That's exactly the feature unlocked by our JS router.
+
+The modules that you'll want to be loaded dynmically are to be placed into `scripts/routes/`, then simply initialise the router, telling it which modules load on what pages.
+
+```js
+// in main.js
+import router from './router'; // the router itself is a module
+
+function domready(callback) { … }
+
+// It is safer to call it when DOM is ready,
+// or else you'd have to check for the readyness in your dynamic modules
+domready(() => {
+    router({
+        home: 'home', // import ./routes/home.js when body has "home" class
+        slider: 'home' // also import ./routes/slider.js on home
+        blog: ['blog', 'single-post'], // import ./routes/blog.js when body has either "blog" or "single-post" class
+    })
+    .then(() => console.log('Modules loaded 🎉'))
+    .catch(console.error);
+});
+```
+
+Under the hood, conditional loading are nothing less than ESModule dynamic imports. Therefore, they are compatible with [all major browsers](https://caniuse.com/es6-module-dynamic-import). For those older browsers such as IE11 (if you ever want to support them), all imports will be bundled in the `nomodule` script – `main.iife.js` – that's automatically available for older browsers.
+
+The only downside is that the file contains all the code, as these browers don't support dynamic imports, so the first download is bigger.
 
 ### Less
 * Media Queries framework for instant development using `@media`
