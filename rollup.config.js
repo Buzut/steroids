@@ -5,10 +5,12 @@ import { terser } from 'rollup-plugin-terser';
 
 const esm = {
     input: 'scripts/main.js',
+    preserveEntrySignatures: false,
     output: {
         format: 'es',
         sourcemap: true,
-        file: `scripts/main-${process.env.npm_package_version}.esm.min.js`
+        entryFileNames: `[name]-${process.env.npm_package_version}.js`,
+        dir: 'scripts/build/'
     },
     plugins: [
         commonjs(),
@@ -22,13 +24,13 @@ const iife = {
     input: 'scripts/main.js',
     output: {
         format: 'iife',
-        file: `scripts/main-${process.env.npm_package_version}.iife.min.js`,
+        file: `scripts/build/main-${process.env.npm_package_version}.iife.min.js`,
         name: 'steroids'
     },
     plugins: [
         commonjs(),
         noderesolve(),
-        babel({ babelHelpers: 'bundled' }),
+        babel({ babelHelpers: 'bundled', plugins: ['babel-plugin-transform-dynamic-imports-to-static-imports'] }),
         terser()
     ]
 };

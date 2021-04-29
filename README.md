@@ -64,8 +64,37 @@ This executes the [install script](install.sh) that will:
 
 ### JavaScript
 * ES6 setup, ready to use the latest features (Babel)
-* Possibility to use CommonJS & ESM modules (Rollup)
-* Two JS builds: one as an ES6 module and the second one as a normal script. This allows for best performance and compatibility with the widest range of browsers as [Google explains](https://developers.google.com/web/fundamentals/primers/modules).
+* Possibility to use CommonJS & ESM modules with [Tree Shaking](https://en.wikipedia.org/wiki/Tree_shaking) (Rollup)
+* Powerfull DOM based routing (you can load some JS files on certain pages only)
+* Two JS builds: one as an ES6 module and the second one as a normal script. This allows for best performance and compatibility with the widest range of browsers as [Google explains](https://developers.google.com/web/fundamentals/primers/modules)
+
+#### JS conditional loading
+You know that speed is everything for the UX and the SEO of your site. So why load one big JS file on all pages when you can target just the amount of JS required on a given page? That's exactly the feature unlocked by our JS router.
+
+The modules that you'll want to be loaded dynmically are to be placed into `scripts/routes/`, then simply initialise the router, telling it which modules load on what pages.
+
+```js
+// in main.js
+import router from './router'; // the router itself is a module
+
+function domready(callback) { … }
+
+// It is safer to call it when DOM is ready,
+// or else you'd have to check for the readyness in your dynamic modules
+domready(() => {
+    router({
+        home: 'home', // import ./routes/home.js when body has "home" class
+        slider: 'home' // also import ./routes/slider.js on home
+        blog: ['blog', 'single-post'], // import ./routes/blog.js when body has either "blog" or "single-post" class
+    })
+    .then(() => console.log('Modules loaded 🎉'))
+    .catch(console.error);
+});
+```
+
+Under the hood, conditional loading are nothing less than ESModule dynamic imports. Therefore, they are compatible with [all major browsers](https://caniuse.com/es6-module-dynamic-import). For those older browsers such as IE11 (if you ever want to support them), all imports will be bundled in the `nomodule` script – `main.iife.js` – that's automatically available for older browsers.
+
+The only downside is that the file contains all the code, as these browers don't support dynamic imports, so the first download is bigger.
 
 ### Less
 * Media Queries framework for instant development using `@media`
