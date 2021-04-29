@@ -1,11 +1,17 @@
 {
+    "parserOptions": {
+        "ecmaVersion": 12,
+        "sourceType": "module",
+        "ecmaFeatures": {}
+    },
     "extends": "airbnb-base",
     "env": {
-        "browser": true,
+        "browser": true
     },
     "globals": {
     },
     "rules": {
+        "arrow-parens": ["error", "as-needed"],
         "brace-style": ["error", "stroustrup"],
         "comma-dangle": ["error", "never"],
         "func-names": ["error", "never"],
