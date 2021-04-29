@@ -1,6 +1,6 @@
 {
   "name": "steroids",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "The next big thing",
   "scripts": {
     "gitinit": "test -d .git && cd .git/hooks/ && curl -O https://raw.githubusercontent.com/Buzut/git-emojis-hook/master/commit-msg && curl -O https://raw.githubusercontent.com/Buzut/git-emojis-hook/master/prepare-commit-msg && chmod +x * || exit 0",
