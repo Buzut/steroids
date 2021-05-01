@@ -134,7 +134,7 @@ Seriously, a lot of plugins are of no use on most pages:
 * a form plugin running its logic, loading its styles and JS on **every page**,
 * an image optimisation plugin that isn't meant for frontend but still loads on every request?
 
-**#WTF don't you think?**
+**WTF don't you think?**
 
 For that very reason, I use [Asset CleanUp Pro](https://shareasale.com/r.cfm?b=1448730&u=2800929&m=92973&urllink=&afftrack=) on every site I build. It allows you to unload any core, theme and plugin CSS/JS site-wide or on a per-page basis. It also allows you to completely control when a plugin executes its PHP code.
 
