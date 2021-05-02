@@ -23,6 +23,8 @@ const DEACTIVATE_GUTENBERG_DEFAULT_CSS = false;
 
 /** Image management */
 const REMOVE_THUMBNAIL_IMG_WIDTH_HEIGHT = true; // Remove default HTML width/height that prevents fluid images
+const REMOVE_SRCSET = false;
+const IMG_COMPRESS_QUALITY = 80;
 const REPLACE_NON_ASCII_IN_IMG_NAME = true;
 const REPLACE_SRC_IMG_FILE_BY_LARGE_IMG = false; // Get rid of source image file and only store the big generated image
 

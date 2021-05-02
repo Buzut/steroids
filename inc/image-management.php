@@ -25,6 +25,3 @@ function steroids_set_ui_image_sizes($sizes) {
 }
 // add_filter('image_size_names_choose', 'steroids_set_ui_image_sizes');
 
-// https://developer.wordpress.org/reference/hooks/jpeg_quality/
-// add_filter('jpeg_quality', function($arg){ return 50; }); // How to compress images
-// add_filter('wp_calculate_image_srcset_meta', '__return_null'); // Remove srcset
