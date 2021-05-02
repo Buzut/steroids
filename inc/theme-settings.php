@@ -1,6 +1,9 @@
 <?php
+namespace steroids;
+
 defined('ABSPATH') || exit;
 require dirname(__DIR__, 1) . '/config.php';
+
 
 // Hide update notif
 function steroids_hide_updates() {
@@ -11,9 +14,9 @@ function steroids_hide_updates() {
 // Activate the hide updates ƒn for all users but the first registered one
 // Remove the condition if you want to hide them for all users
 if (DISABLE_UI_UPDATES && (get_current_user_id() !== 1 || DISABLE_UI_UPDATES_FOR_FIRST_ADMIN)) {
-    add_filter('pre_site_transient_update_core', 'remove_core_updates'); // hide updates for WordPress itself
-    add_filter('pre_site_transient_update_plugins', 'remove_core_updates'); // hide updates for all plugins
-    add_filter('pre_site_transient_update_themes', 'remove_core_updates'); // hide updates for all themes
+    add_filter('pre_site_transient_update_core', 'steroids_hide_updates'); // hide updates for WordPress itself
+    add_filter('pre_site_transient_update_plugins', 'steroids_hide_updates'); // hide updates for all plugins
+    add_filter('pre_site_transient_update_themes', 'steroids_hide_updates'); // hide updates for all themes
 }
 
 if (THEME_SUPPORT_HTML5) add_theme_support('html5');
