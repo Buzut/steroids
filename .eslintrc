@@ -11,7 +11,7 @@
     "globals": {
     },
     "rules": {
-        "arrow-parens": ["error", "as-needed"],
+        "arrow-parens": ["error", "as-needed", { "requireForBlockBody": true }],
         "brace-style": ["error", "stroustrup"],
         "comma-dangle": ["error", "never"],
         "func-names": ["error", "never"],
