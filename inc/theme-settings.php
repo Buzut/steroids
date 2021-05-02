@@ -80,6 +80,11 @@ function steroids_remove_dns_prefetch($hints, $relation_type) {
 
 if (REMOVE_DNS_PREFETCH) add_filter('wp_resource_hints', 'steroids_remove_dns_prefetch', 10, 2);
 
+
+// https://developer.wordpress.org/reference/hooks/jpeg_quality/
+add_filter('jpeg_quality', function($arg){ return IMG_COMPRESS_QUALITY; }); // How to compress images
+if (REMOVE_SRCSET) add_filter('wp_calculate_image_srcset_meta', '__return_null'); // Remove srcset
+
 // Remove thumbnail width and height dimensions that prevent fluid images in the_thumbnail
 function steroids_remove_thumbnail_dimensions($html) {
     $html = preg_replace('/(width|height)=\"\d*\"\s/', "", $html);
