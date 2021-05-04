@@ -35,3 +35,10 @@ function steroids_register_nav_menus() {
     ]);
 }
 add_action('init', 'steroids_register_nav_menus');
+
+// Remove the <div> surrounding the dynamic navigation to cleanup markup
+function steroids_clean_dynamic_nav($args = '') {
+    $args['container'] = false;
+    return $args;
+}
+add_filter('wp_nav_menu_args', 'steroids_clean_dynamic_nav');
