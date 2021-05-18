@@ -54,6 +54,11 @@ This executes the [install script](install.sh) that will:
 * set up WordPress admin user, email and password, project name and url,
 * finally install Steroids theme and remove default themes.
 
+
+Also, `livereload` is ready to be used. Just set the `IS_DEV` constant to true in your `wp-config.php` by adding this line `define('IS_DEV', true)`.
+
+Last but not least, if you want to take advantage of linting from stylelint and eslint, you'll have to install their respective plugins in your code editor.
+
 ## Features
 
 ### HTML5

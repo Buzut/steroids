@@ -13,6 +13,12 @@ $assets_version = file_get_contents(__DIR__ . '/assets-version');
         <script async type="module" src="<?= get_template_directory_uri() ?>/scripts/build/main-<?= $assets_version ?>.js"></script>
         <script async nomodule src="<?= get_template_directory_uri() ?>/scripts/build/main-<?= $assets_version ?>.iife.js"></script>
         <?php wp_head(); ?>
+        <?php if (IS_DEV) : ?>
+            <script>
+                document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] +
+                ':35729/livereload.js?snipver=1"></' + 'script>')
+            </script>
+        <?php endif; ?>
     </head>
 
     <body <?php body_class(); ?>>
