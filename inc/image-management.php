@@ -24,4 +24,3 @@ function steroids_set_ui_image_sizes($sizes) {
     return array_merge($sizes, $custom_sizes);
 }
 // add_filter('image_size_names_choose', 'steroids_set_ui_image_sizes');
-
