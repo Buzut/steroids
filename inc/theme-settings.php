@@ -1,9 +1,6 @@
 <?php
-namespace steroids;
-
 defined('ABSPATH') || exit;
 require dirname(__DIR__, 1) . '/config.php';
-
 
 // Hide update notif
 function steroids_hide_updates() {
@@ -56,12 +53,11 @@ function steroids_upgrade_jquery(&$scripts) {
 if (OVERRIDE_JQUERY) add_filter('wp_default_scripts', 'steroids_upgrade_jquery');
 
 // Convert css links to HTML5
-function steroids_clean_style_tag($html, $handle, $href, $media) {
+add_filter('style_loader_tag', function ($html, $handle, $href, $media) {
     $stripped_type = str_replace(" type='text/css'", '', $html);
     $stripped_id = str_replace( " id='$handle-css' ", '', $stripped_type);
     return str_replace(" media='all' /", '', $stripped_id);
-}
-add_filter('style_loader_tag', 'steroids_clean_style_tag', 10, 4); // Convert css links to HTML5
+}, 10, 4); // Convert css links to HTML5
 
 // Remove query string from static files
 function steroids_remove_cssjs_ver($src) {
@@ -76,12 +72,10 @@ if (REMOVE_QUERY_STRING) {
 }
 
 // Remove counter-productive auto dns prefetch
-function steroids_remove_dns_prefetch($hints, $relation_type) {
+if (REMOVE_DNS_PREFETCH) add_filter('wp_resource_hints', function ($hints, $relation_type) {
     if ('dns-prefetch' === $relation_type) return array_diff(wp_dependencies_unique_hosts(), $hints);
     return $hints;
-}
-
-if (REMOVE_DNS_PREFETCH) add_filter('wp_resource_hints', 'steroids_remove_dns_prefetch', 10, 2);
+}, 10, 2);
 
 
 // https://developer.wordpress.org/reference/hooks/jpeg_quality/
