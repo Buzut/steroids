@@ -2,7 +2,7 @@
 
 # World's most advanced theme for frontend developers
 WordPress starter theme packed with modern tooling to make your life easier and your code more efficient.
-Steroids is an opinionated WordPress starter theme built for frontend & JS developers: one command install, Less styles, ES6, ES modules, linting,  npm deploy command and much more…
+Steroids is an opinionated WordPress starter theme built for frontend & JS developers: one command install, Less styles, ESNext, ES modules, dynamic imports, linting, npm deploy command and much more…
 
 ### What's in it?
 * bundles & compiles ESNext JavaScript (served via both a `<script type="module">` & `<script nomodule>` for older browsers) 📦
@@ -18,20 +18,8 @@ Steroids is an opinionated WordPress starter theme built for frontend & JS devel
 ## Getting Started
 Node.js and npm are used to lint, compile and minify your code (CSS & JS).
 
-After downloading the theme into your WordPress `themes/` directory, all you have to do is install other dependencies through npm with `npm install` and you're good to go.
-
-Processed CSS will be outputed to `styles/main-1.0.min.css` and processed JavaScript to `scripts/build/main-1.0.0.js` & `scripts/build/main-1.0.0.iife.js`. The version number, `1.0.0` in this exemple, is defined via native npm versioning (set via command line or in package.json) for easy cache invalidation.
-
-* `npm run css:build:dev` to compile less files and add sourcemaps
-* `npm run css:build:prod` to build, prefix and minify styles
-* `npm run js:build` to compile and minify JS
-* `npm run build` to build and minify CSS & JS
-* `npm run watch` to watch and automatically re-build CSS & JS during development
-* `npm run compress` to pre-compress assets into Gzip & Brotli and encode images to webP
-
-If you want to use a module from npm in your scripts, just install it with `npm install xxx --save` and require it using either commonJS or ESM syntax. `npm run build` will do the rest!
-
-Also, if you want to take advantage of linting from stylelint and eslint, you'll have to install their respective plugins in your code editor.
+### Old school
+Download the theme into your `wp-content/themes` directory as you would normally do.
 
 ### One command install
 This one-liner installs WordPress with the Steroids theme.
@@ -79,15 +67,15 @@ Last but not least, if you want to take advantage of linting from stylelint and 
 * Clean, neatly organised code
 
 ### JavaScript
-* ES6 setup, ready to use the latest features (Babel)
+* ESNext setup, ready to use the latest features (Babel)
 * Possibility to use CommonJS & ESM modules with [Tree Shaking](https://en.wikipedia.org/wiki/Tree_shaking) (Rollup)
 * Powerfull DOM based routing (you can load some JS files on certain pages only)
 * Two JS builds: one as an ES6 module and the second one as a normal script. This allows for best performance and compatibility with the widest range of browsers as [Google explains](https://developers.google.com/web/fundamentals/primers/modules)
 
 #### JS conditional loading
-You know that speed is everything for the UX and the SEO of your site. So why load one big JS file on all pages when you can target just the amount of JS required on a given page? That's exactly the feature unlocked by our JS router.
+You know that speed is everything for the UX and SEO of your site. So why load one big JS file on all pages when you can target just the amount of JS required on a given page? That's exactly the feature unlocked by our JS router.
 
-The modules that you'll want to be loaded dynmically are to be placed into `scripts/routes/`, then simply initialise the router, telling it which modules load on what pages.
+The modules that you'll want to be loaded dynmically are to be placed into `scripts/routes/`, then simply initialise the router, telling it which modules should load on what pages.
 
 ```js
 // in main.js
@@ -125,11 +113,11 @@ The `styles/` directory structure is as follows:
 * `critical.less` is the file that will immediately be linked on all pages. You use it to include stylesheets that are essential on all (or most) pages (header, typography…)
 * `lazy.less` is the file that will be lazy-loaded on all pages (because styles are render-blocking). You use it to include stylesheets that are used on all (or most) pages but that can be parsed after initial pageload.
 
-The files imported by either `critical.less` or `lazy.less` are to be located into `critical/` or `lazy/` respectively. All these files will inherit the functions and variables defined in `utils.less` so you won't need to `@import` it before using it.
+The files imported by either `critical.less` or `lazy.less` are to be located into `critical/` or `lazy/` respectively. All these files will inherit the functions and variables defined in `utils.less` so you won't need to `@import` it before using its functions.
 
 The third folder named `routes/` contains all the files that are conditionally loaded.
 
-Subfolders can obviously be created to better sort your styles but files in these subfolders are parsed only if imported by first level files, otherwise, they serve no purpose.
+Subfolders can obviously be created to better sort your styles but files in these subfolders are compiled only if imported by files of their parent folder (either `critical.less`, `lazy.less` or `routes/*.less`), otherwise, they serve no purpose.
 
 Finaly, to dynamically load stylesheets on a given template, you'll pass the stylesheet(s) slug(s) in the shape of an array as the second parameter of the `get_header` function: `get_header(null, ['slug']).
 
@@ -204,7 +192,7 @@ For that very reason, I use [Asset CleanUp Pro](https://shareasale.com/r.cfm?b=1
 
 There's more, it allows you to remove all useless WordPress styles, assets and markup (like image emojis, comments RSS feed etc).
 
-Note: if you buy the plugin via the previous link, It'll buy me a coffe. That will help support my work. Also, there is a [free version](https://wordpress.org/plugins/wp-asset-clean-up/) that's nice too if you don't need the features of the Pro version.
+Note: if you buy the plugin via the previous link, it'll buy me a coffe. That will help support my work. Also, there is a [free version](https://wordpress.org/plugins/wp-asset-clean-up/) that's nice too if you don't need the features of the Pro version.
 
 ## Contributing
 There's sure room for improvement, so feel free to hack around and submit PRs!
