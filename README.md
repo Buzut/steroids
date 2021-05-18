@@ -5,10 +5,11 @@ WordPress starter theme packed with modern tooling to make your life easier and 
 Steroids is an opinionated WordPress starter theme built for frontend & JS developers: one command install, Less styles, ES6, ES modules, linting,  npm deploy command and much more…
 
 ### What's in it?
-* bundles & compiles ES6+ JS (served via both a `script type="module"` & a basic script for older browsers) 📦
-* ready for JS tree shaking & code spliting (conditional loading & dynamic imports) 🚀
+* bundles & compiles ESNext JavaScript (served via both a `<script type="module">` & `<script nomodule>` for older browsers) 📦
+* optimises JS with tree shaking & code spliting (conditional loading & dynamic imports) 🚀
 * bundles styles & autoprefixes CSS properties that need to be 💄
-* enforces clean JS code & functional sorting of CSS properties (only in IDE's) 💅
+* optimises styles by allowing CSS dynamic loading (target specific templates) 🚀
+* enforces clean JS code & functional sorting of CSS properties 💅
 * minifies and compresses (gzip & brotli) CSS and JS 🏗
 * pre-compresses theme images to webP 🔥
 * watches for files updates and run build tasks on update ⚙️
@@ -54,6 +55,16 @@ This executes the [install script](install.sh) that will:
 * set up WordPress admin user, email and password, project name and url,
 * finally install Steroids theme and remove default themes.
 
+Processed CSS will be outputed to `styles/build/` and processed JavaScript to `scripts/build/`. The version number is defined via native npm versioning (set via command line or in package.json) for easy cache invalidation.
+
+* `npm run css:build:dev` to compile less files and add sourcemaps
+* `npm run css:build:prod` to build, prefix and minify styles
+* `npm run js:build` to compile and minify JS
+* `npm run watch` to watch and automatically re-build CSS & JS during development
+* `npm run compress` to pre-compress assets into Gzip & Brotli and encode images to webP
+* `npm run build` to build and minify CSS & JS and compress assets
+
+If you want to use a module from npm in your scripts, just install it with `npm install xxx --save` and require it using either commonJS or ESM syntax. `npm run wach/build` will do the rest!
 
 Also, `livereload` is ready to be used. Just set the `IS_DEV` constant to true in your `wp-config.php` by adding this line `define('IS_DEV', true)`.
 
@@ -101,12 +112,60 @@ Under the hood, conditional loading are nothing less than ESModule dynamic impor
 
 The only downside is that the file contains all the code, as these browers don't support dynamic imports, so the first download is bigger.
 
-### Less
-* Media Queries framework for instant development using `@media`
-* You take advantage of all the [Less awesomeness](http://lesscss.org/)
+### Styles
+Styles use Less by default, but it should be pretty straightforward to use Sass instead. LEt me know if you want to maintain a Sass version.
 
-### Sass
-There is currently no Sass version, but it's just a few settings to modify. If you create a Sass fork, let me know, I'll be happy to link to it.
+In addition to offering time saving utils for responsive utilities, you benefit from all the [Less awesomeness](http://lesscss.org/).
+
+The real killer feature though, is the **conditional loading of styles**. You can target on which templates your styles are loading.
+
+The `styles/` directory structure is as follows:
+
+* `utils.less` are the utility functions. These are to be included at the top of the files that will use them
+* `critical.less` is the file that will immediately be linked on all pages. You use it to include stylesheets that are essential on all (or most) pages (header, typography…)
+* `lazy.less` is the file that will be lazy-loaded on all pages (because styles are render-blocking). You use it to include stylesheets that are used on all (or most) pages but that can be parsed after initial pageload.
+
+The files imported by either `critical.less` or `lazy.less` are to be located into `critical/` or `lazy/` respectively. All these files will inherit the functions and variables defined in `utils.less` so you won't need to `@import` it before using it.
+
+The third folder named `routes/` contains all the files that are conditionally loaded.
+
+Subfolders can obviously be created to better sort your styles but files in these subfolders are parsed only if imported by first level files, otherwise, they serve no purpose.
+
+Finaly, to dynamically load stylesheets on a given template, you'll pass the stylesheet(s) slug(s) in the shape of an array as the second parameter of the `get_header` function: `get_header(null, ['slug']).
+
+For instance, let's say we need to import our stylesheet `styles/routes/blog.less` on our blog posts. The template responsible for these blog posts is `single.php`. So the file will start like this:
+
+```php
+<?php
+defined('ABSPATH') || exit;
+get_header(null, ['blog']);
+```
+
+Now let's say that we also want to import a second stylesheet that is dedicated to comments, creatively named `comments.less` (that's also used on product pages). We'll do something like the following.
+
+```php
+<?php
+defined('ABSPATH') || exit;
+get_header(null, ['blog', 'comments']);
+```
+
+We might realise that `comments.less` contains a lot of styles and that they are at the end of the article, so far under the fold. We therefore would rather have that styles loaded asynchronously. Fair enough.
+
+```php
+<?php
+defined('ABSPATH') || exit;
+get_header(null, [['name' => 'blog', 'lazy' => false], ['name' => 'comments', 'lazy' => true]]);
+```
+
+This way, the blog stylesheet will load right away, but the comments stylesheet will load after initial pageload.
+
+Note that `'lazy' => false` is the default and can be omitted, so the following is correct and has the same effect.
+
+```php
+<?php
+defined('ABSPATH') || exit;
+get_header(null, [['name' => 'blog'], ['name' => 'comments', 'lazy' => true]]);
+```
 
 ### Git
 Naming is often the hardest thing, Git commits are no exception. That's why Steroids comes with a very convenient [git commit template](https://github.com/Buzut/git-emojis-hook) that should help a lot. Feel free to remove it if you don't need it!
