@@ -23,7 +23,7 @@
     "clean:compress": "find . -path './node_modules' -prune -o \\( -name '*.gz' -o -name '*.br' \\) -exec rm '{}' \\;",
     "clean:all": "npm run clean:build && npm run clean:compress",
     "build": "npm run css:build:prod && npm run js:build && npm run compress && npm run generateAssetsVersionFile",
-    "watch": "npm run clean:all && npm run css:watch & npm run js:watch",
+    "watch": "npm run clean:all && livereload -w 1000 -ee 'less' -x 'css' & npm run css:watch & npm run js:watch",
     "deploy": "npm run build && rsync -rv --exclude=.git --exclude=.DS_Store --exclude=node_modules --exclude=package*.json --exclude=*.less . YOUR_SERVER --delete"
   },
   "repository": {
@@ -47,6 +47,7 @@
     "imagemin-cli": "^6.0.0",
     "imagemin-webp": "^5.0.0",
     "less": "^3.11.1",
+    "livereload": "^0.9.3",
     "nodemon": "^1.19.4",
     "postcss-cli": "^8.3.1",
     "rollup": "^2.33.1",
