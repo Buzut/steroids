@@ -1,9 +1,15 @@
+# Root level
 .DS_Store
+.env
+composer.phar
+vendor/
+public/plugins/
+public/uploads/
+public/wp/
+public/wp-cli*
+
+# Theme level
+assets-version
 jquery.js
 node_modules/
 build/
-assets-version
-*.min.css
-*.map
-*.br
-*.gz

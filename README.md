@@ -1,10 +1,11 @@
-![Steroid's logo](https://github.com/Buzut/steroids/blob/master/img/logo.jpg)
+![Steroid's logo](https://github.com/Buzut/steroids/blob/master/public/themes/steroids/img/logo.jpg)
 
 # World's most advanced theme for frontend developers
 WordPress starter theme packed with modern tooling to make your life easier and your code more efficient.
 Steroids is an opinionated WordPress starter theme built for frontend & JS developers: one command install, Less styles, ESNext, ES modules, dynamic imports, linting, npm deploy command and much more…
 
 ### What's in it?
+* manages plugins and libraries with composer (can opt-out) like you would with a proper framework 💪
 * bundles & compiles ESNext JavaScript (served via both a `<script type="module">` & `<script nomodule>` for older browsers) 📦
 * optimises JS with tree shaking & code spliting (conditional loading & dynamic imports) 🚀
 * bundles styles & autoprefixes CSS properties that need to be 💄
@@ -16,34 +17,68 @@ Steroids is an opinionated WordPress starter theme built for frontend & JS devel
 * manages assets versioning via npm version (just run `npm version [major|minor|patch]` to update) ⏰
 
 ## Getting Started
-Node.js and npm are used to lint, compile and minify your code (CSS & JS).
+Node.js and npm are used to lint, compile and minify your code (CSS & JS), so make sure they are installed.
+Make sure also that you have PHP and MySQL/MariaDB installed as well (could be usefull for WordPress!).
 
-### Old school
-Download the theme into your `wp-content/themes` directory as you would normally do.
-
-### One command install
-This one-liner installs WordPress with the Steroids theme.
+If you already have composer installed globally, you're all set up, otherwise you can install it locally in one command:
 
 ```bash
-curl -fsS https://raw.githubusercontent.com/Buzut/steroids/master/install.sh | bash -s \
+# Depending on your OS, I'd advise for the system package manager way
+# On Debian based systems
+apt install composer
+
+# On macOS with bhomebrew
+brew install composer
+
+# On Windows with Chocolatey
+# you also have the option to use an .exe installer: https://getcomposer.org/Composer-Setup.exe
+choco install composer
+
+# Or locally at the project root, on any system
+curl -sS https://getcomposer.org/installer | php
+```
+
+Then you can set up your WordPress installation with composer.
+
+```
+# If you have composer globally installed
+composer create-project buzut/steroids my-new-project
+
+# If you downloaded composer locally
+php composer.phar create-project buzut/steroids my-new-project
+```
+
+You then have a working WordPress install with Steroids theme into your `my-new-project` directory. If you have downloaded composer locally, move it at the root of `my-new-project` directory.
+
+If you haven't created a database yet, you can do it in one command with the install script. It will:
+* create the database for the project,
+* set up WordPress admin user, email and password, project name and url.
+
+```bash
+./install.sh
 <dbname> \
 <title> \
 <url> \
 <admin_user> \
 <admin_passwd> \
 <admin_email> \
-[<locale (defaults to en_US)>] \
 [<mysql user (defaults to root)>] \
 [<mysql password (defaults to empty)>]
 ```
 
-This executes the [install script](install.sh) that will:
-* create the database for the project,
-* download a new WordPress directory in your current directory,
-* set up WordPress admin user, email and password, project name and url,
-* finally install Steroids theme and remove default themes.
+At last, head to the theme directory: `themes/steroids/` and run the usual `npm install`, you're all set up!
 
-Processed CSS will be outputed to `styles/build/` and processed JavaScript to `scripts/build/`. The version number is defined via native npm versioning (set via command line or in package.json) for easy cache invalidation.
+## Usage
+
+### Configuration
+All the main WordPress configuration happens in the dotenv `.env` file in the public directory. These configuration constants are then transposed to the usual [`wp-config.php`](public/wp-config.php).
+
+This way of doing allows us to version our `wp-config` file and easily switch our configs based on the current environment (dev, staging, prod…). If you ever need new options in the wp-config file, no worries, just add it to `wp-config.php`, add the correspondig value to `.env` and commit.
+
+You also have various theme-related options that you can easily set up via the theme [`config.php`](public/themes/steroids/config.php) config file.
+
+### Dev commands
+Processed CSS will be outputed to `styles/build/` and processed JavaScript to `scripts/build/` in the theme's directory. The version number is defined via native npm versioning (set via command line `npm version [major|minor|patch]` or in package.json) for easy cache invalidation.
 
 * `npm run css:build:dev` to compile less files and add sourcemaps
 * `npm run css:build:prod` to build, prefix and minify styles
@@ -54,25 +89,39 @@ Processed CSS will be outputed to `styles/build/` and processed JavaScript to `s
 
 If you want to use a module from npm in your scripts, just install it with `npm install xxx --save` and require it using either commonJS or ESM syntax. `npm run wach/build` will do the rest!
 
-Also, `livereload` is ready to be used. Just set the `IS_DEV` constant to true in your `wp-config.php` by adding this line `define('IS_DEV', true)`.
+Also, `livereload` is ready to be used. Just set the `IS_DEV` constant to true in the `.env` file.
 
 Last but not least, if you want to take advantage of linting from stylelint and eslint, you'll have to install their respective plugins in your code editor.
 
-## Features
+### PHP
 
-### HTML5
-* HTML5 semantic markup
-* W3C valid code foundations
-* Responsive ready
-* Clean, neatly organised code
+#### Installing dependencies
+All of your work lays as usual in the theme's directory (`themes/steroids`). When you need an external library or a new plugin, just install it with composer: `composer require what_you_need`.
+
+**If it's a library**: you just need to include the autoloader before calling a library and it'll take care of the rest.
+
+```
+// 3 here means 3 levels up, it will depend on where you're calling this from
+require dirname(__DIR__, 3) . '/vendor/autoload.php';
+
+// then call your library as you normally would.
+```
+
+**If it's a plugin**: it's listed in the plugins in your admin dashboard and you just need to activate it.
+
+#### Steroids namespace
+To avoid collisions, Steroids uses its own namespace in its functions (inc/*) files. Nothing fancy here, just prefix functions with `Steroids\`, like so `Steroids\function_name`.
+
+If you need a reminder about namespace and how to use it, a quick read of the [official docs](https://www.php.net/manual/en/language.namespaces.basics.php) will set you up.
 
 ### JavaScript
+Out of the box, you get:
 * ESNext setup, ready to use the latest features (Babel)
 * Possibility to use CommonJS & ESM modules with [Tree Shaking](https://en.wikipedia.org/wiki/Tree_shaking) (Rollup)
 * Powerfull DOM based routing (you can load some JS files on certain pages only)
 * Two JS builds: one as an ES6 module and the second one as a normal script. This allows for best performance and compatibility with the widest range of browsers as [Google explains](https://developers.google.com/web/fundamentals/primers/modules)
 
-#### JS conditional loading
+#### Using JS conditional loading
 You know that speed is everything for the UX and SEO of your site. So why load one big JS file on all pages when you can target just the amount of JS required on a given page? That's exactly the feature unlocked by our JS router.
 
 The modules that you'll want to be loaded dynmically are to be placed into `scripts/routes/`, then simply initialise the router, telling it which modules should load on what pages.
@@ -101,7 +150,7 @@ Under the hood, conditional loading are nothing less than ESModule dynamic impor
 The only downside is that the file contains all the code, as these browers don't support dynamic imports, so the first download is bigger.
 
 ### Styles
-Styles use Less by default, but it should be pretty straightforward to use Sass instead. LEt me know if you want to maintain a Sass version.
+Styles use Less by default, but it should be pretty straightforward to use Sass instead. Let me know if you want to maintain a Sass version.
 
 In addition to offering time saving utils for responsive utilities, you benefit from all the [Less awesomeness](http://lesscss.org/).
 
@@ -117,9 +166,9 @@ The files imported by either `critical.less` or `lazy.less` are to be located in
 
 The third folder named `routes/` contains all the files that are conditionally loaded.
 
-Subfolders can obviously be created to better sort your styles but files in these subfolders are compiled only if imported by files of their parent folder (either `critical.less`, `lazy.less` or `routes/*.less`), otherwise, they serve no purpose.
+Subfolders can obviously be created to better sort your styles but files in these subfolders are compiled only if imported by files of their parent folder (`routes/*.less`), otherwise, they serve no purpose.
 
-Finaly, to dynamically load stylesheets on a given template, you'll pass the stylesheet(s) slug(s) in the shape of an array as the second parameter of the `get_header` function: `get_header(null, ['slug']).
+Finaly, to dynamically load stylesheets on a given template, you'll pass the stylesheet(s) slug(s) in the shape of an array as the second parameter of the `get_header` function: `get_header(null, ['slug'])`.
 
 For instance, let's say we need to import our stylesheet `styles/routes/blog.less` on our blog posts. The template responsible for these blog posts is `single.php`. So the file will start like this:
 
@@ -137,7 +186,7 @@ defined('ABSPATH') || exit;
 get_header(null, ['blog', 'comments']);
 ```
 
-We might realise that `comments.less` contains a lot of styles and that they are at the end of the article, so far under the fold. We therefore would rather have that styles loaded asynchronously. Fair enough.
+We might realise that `comments.less` contains a lot of styles and that they are at the end of the article, far under the fold. We therefore would rather have these styles loaded asynchronously. Fair enough.
 
 ```php
 <?php
@@ -155,27 +204,8 @@ defined('ABSPATH') || exit;
 get_header(null, [['name' => 'blog'], ['name' => 'comments', 'lazy' => true]]);
 ```
 
-### Git
-Naming is often the hardest thing, Git commits are no exception. That's why Steroids comes with a very convenient [git commit template](https://github.com/Buzut/git-emojis-hook) that should help a lot. Feel free to remove it if you don't need it!
-
-### PHP & WordPress functions
-A handfull of pre-defined functions:
-
-* Built-in pagination
-* Markdown rendering function to render Markdown in templates
-* Image optimisation built-in
-* And many more, just take a look at [config.php](config.php) & [inc/](inc/)
-
-#### `steroids` prefix
-Functions are prefixed by `steroids_` to avoid collision. If you want to rename them, you can do so with a project wide search and replace to replace all instances of `steroids_` by the awesome name you chose.
-
 ### Assets pre-compression
 CSS, JavaScript and SVG files are pre-compressed in both Brotli and Gzip so that your webserver will be able to server better compressed files even faster!
-
-### One line npm deploy
-As everyone knows, `npm` is a powerfull tool. So why not take advantage of it for casual deploys? There's a sweet `deploy` command built in that simply relies on rsync to sync your local theme to your server.
-
-To take advantage of it, just replace `YOUR_SERVER` in the npm scripts section by your server's ssh info and you're good to go!
 
 ## Performance & junk removal
 This theme used to do a lot to remove "junk" WordPress defaults. It still does a few things but in the end, this is better managed by a third party plugin.
@@ -194,11 +224,14 @@ There's more, it allows you to remove all useless WordPress styles, assets and m
 
 Note: if you buy the plugin via the previous link, it'll buy me a coffe. That will help support my work. Also, there is a [free version](https://wordpress.org/plugins/wp-asset-clean-up/) that's nice too if you don't need the features of the Pro version.
 
+## Git
+You can initialise git with composer `composer run-script gitinit`. This will initialise a Git repo with [Git Emojis](https://github.com/Buzut/git-emojis-hook) hooks.
+
 ## Contributing
 There's sure room for improvement, so feel free to hack around and submit PRs!
 
 That would be cool for instance if we could have proper HTML emails. So if you have the skills to code HTML emails, don't hesitate to give me a helping hand!
 
-Please just follow the style of the existing code, which is [Airbnb's style](http://airbnb.io/javascript/) with [minor modifications](.eslintrc).
+Please just follow the style of the existing code, which is [Airbnb's style](http://airbnb.io/javascript/) with [minor modifications](public/themes/steroids/.eslintrc).
 
 To maintain things clear and visual, please follow the [Git commit template](https://github.com/Buzut/git-emojis-hook).

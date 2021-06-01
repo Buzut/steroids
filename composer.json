@@ -1,0 +1,47 @@
+{
+    "name": "buzut/steroids",
+    "description": "A modern WordPress stack for frontend developers",
+    "authors": [
+        {
+            "name"    : "Buzut",
+            "homepage": "https://buzut.net/"
+        }
+    ],
+    "license": "MIT",
+    "type": "project",
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://wpackagist.org",
+            "only": [
+                "wpackagist-plugin/*",
+                "wpackagist-theme/*"
+            ]
+        }
+    ],
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "require": {
+        "php": ">=7.3",
+        "erusev/parsedown": "^1.7",
+        "johnpbloch/wordpress": ">=5.7",
+        "vlucas/phpdotenv": "^5.3"
+    },
+    "extra": {
+        "installer-paths": {
+            "public/mu-plugins/{$name}": ["type:wordpress-muplugin"],
+            "public/plugins/{$name}": ["type:wordpress-plugin"],
+            "public/themes/{$name}": ["type:wordpress-theme"]
+        },
+        "wordpress-install-dir": "public/wp"
+    },
+    "scripts": {
+        "post-root-package-install": [
+            "if [ ! -f .env -a -f .env.example ]; then cp .env.example .env; fi",
+            "if [ ! -f ./public/wp-cli ]; then curl https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar -o ./public/wp-cli && chmod +x ./public/wp-cli; fi"
+        ],
+        "gitinit": "if [ ! -f .git ]; then git init; fi && cd .git/hooks/ && curl -O https://raw.githubusercontent.com/Buzut/git-emojis-hook/master/commit-msg && curl -O https://raw.githubusercontent.com/Buzut/git-emojis-hook/master/prepare-commit-msg && chmod +x * || exit 0"
+    }
+}

@@ -1,6 +1,6 @@
 {
   "name": "steroids",
-  "version": "2.0.0",
+  "version": "1.0.0",
   "description": "The next big thing",
   "scripts": {
     "gitinit": "test -d .git && cd .git/hooks/ && curl -O https://raw.githubusercontent.com/Buzut/git-emojis-hook/master/commit-msg && curl -O https://raw.githubusercontent.com/Buzut/git-emojis-hook/master/prepare-commit-msg && chmod +x * || exit 0",
@@ -23,8 +23,7 @@
     "clean:compress": "find . -path './node_modules' -prune -o \\( -name '*.gz' -o -name '*.br' \\) -exec rm '{}' \\;",
     "clean:all": "npm run clean:build && npm run clean:compress",
     "build": "npm run css:build:prod && npm run js:build && npm run compress && npm run generateAssetsVersionFile",
-    "watch": "npm run clean:all && livereload -w 1000 -ee 'less' -x 'css' & npm run css:watch & npm run js:watch",
-    "deploy": "npm run build && rsync -rv --exclude=.git --exclude=.DS_Store --exclude=node_modules --exclude=package*.json --exclude=*.less . YOUR_SERVER --delete"
+    "watch": "npm run clean:all && livereload -w 1000 -ee 'less' -x 'css' & npm run css:watch & npm run js:watch"
   },
   "repository": {
     "type": "git",
