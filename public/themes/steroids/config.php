@@ -30,5 +30,7 @@ const REPLACE_SRC_IMG_FILE_BY_LARGE_IMG = false; // Get rid of source image file
 
 /** Admin */
 // By default, still show updates to user whose id = 1 (first registered user & admin)
+// Updates and plugins deletion are disabled if DISALLOW_FILE_MODS (.env option) is set to true
 const DISABLE_UI_UPDATES = false;
 const DISABLE_UI_UPDATES_FOR_FIRST_ADMIN = false; // Hide updates to first admin
+const DISABLE_PLUGIN_DELETION = false;
