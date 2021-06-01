@@ -1,5 +1,6 @@
 <?php
 defined('ABSPATH') || exit;
+require dirname(__DIR__, 3) . '/vendor/autoload.php';
 
 /*
  * The functions defined below are meant to be called directly in the templates
@@ -27,7 +28,6 @@ function steroids_view_article($more) {
 // To be used with get_the_content (for posts/pages) because the_content echoes instead of returning
 // Alse be carefull because the_content doesn't any sanitisation (you can apply them later on if required)
 function steroids_parse_markdown($content, $echo = false) {
-    $Parsedown = require_once 'Parsedown.php';
     $Parsedown = new Parsedown();
 
     if ($echo) echo $Parsedown->text(wptexturize($content));
