@@ -1,6 +1,14 @@
 <?php
 defined('ABSPATH') || exit;
 
+// Remove ability to delete plugins
+if (DISABLE_PLUGIN_DELETION) {
+    add_filter('plugin_action_links', function ($actions) {
+        if (array_key_exists('deactivate', $actions)) unset($actions['deactivate']);
+        return $actions;
+    });
+}
+
 // Hide comments from admin sidebar
 // add_action('admin_menu', function () {
 //     remove_menu_page('edit-comments.php');
