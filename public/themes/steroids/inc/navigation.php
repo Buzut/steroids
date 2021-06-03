@@ -1,10 +1,11 @@
 <?php
+namespace Steroids;
 defined('ABSPATH') || exit;
 
 // Define navigation
 // add as many as you need and reference them in register_nav_menus ƒ below
 // https://developer.wordpress.org/reference/functions/wp_nav_menu/
-function steroids_primary_nav() {
+function primary_nav() {
     wp_nav_menu([
         'theme_location'  => 'primary',
         'menu'            => '',
@@ -27,18 +28,18 @@ function steroids_primary_nav() {
 
 // Register navigation
 // https://codex.wordpress.org/Function_Reference/register_nav_menus
-function steroids_register_nav_menus() {
+function register_nav_menus() {
     register_nav_menus([
         'primary' => 'Header menu'
         // 'sidebar-menu' => __('Sidebar Menu', 'steroids'), // Sidebar Navigation
         // 'extra-menu' => __('Extra Menu', 'steroids') // Extra Navigation if needed (duplicate as many as you need!)
     ]);
 }
-add_action('init', 'steroids_register_nav_menus');
+add_action('init', 'Steroids\register_nav_menus');
 
 // Remove the <div> surrounding the dynamic navigation to cleanup markup
-function steroids_clean_dynamic_nav($args = '') {
+function clean_dynamic_nav($args = '') {
     $args['container'] = false;
     return $args;
 }
-add_filter('wp_nav_menu_args', 'steroids_clean_dynamic_nav');
+add_filter('wp_nav_menu_args', 'Steroids\clean_dynamic_nav');
