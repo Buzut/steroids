@@ -76,6 +76,8 @@ Processed CSS will be outputed to `styles/build/` and processed JavaScript to `s
 * `npm run compress` to pre-compress assets into Gzip & Brotli and encode images to webP
 * `npm run build` to build and minify CSS & JS and compress assets
 
+You have various theme-related options that you can easily set up via the `public/themes/steroids/config.php` config file.
+
 If you want to use a module from npm in your scripts, just install it with `npm install xxx --save` and require it using either commonJS or ESM syntax. `npm run wach/build` will do the rest!
 
 Also, `livereload` is ready to be used. Just set the `IS_DEV` constant to true in the `.env` file.
