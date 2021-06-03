@@ -1,4 +1,4 @@
 <?php defined('ABSPATH') || exit; ?>
 <nav class="pagination">
-    <?php steroids_pagination(); ?>
+    <?php Steroids\print_pagination(); ?>
 </nav>
