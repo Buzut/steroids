@@ -40,7 +40,8 @@ define('WP_DEBUG', filter_var($_ENV['WP_DEBUG'], FILTER_VALIDATE_BOOLEAN));
 define('WP_DEBUG_DISPLAY', filter_var($_ENV['WP_DEBUG_DISPLAY'], FILTER_VALIDATE_BOOLEAN));
 define('WP_DEBUG_LOG', $_ENV['WP_DEBUG_LOG']);
 
-define('WP_POST_REVISIONS', $_ENV['WP_POST_REVISIONS']);
+define('DISABLE_WP_CRON', $_ENV['DISABLE_WP_CRON']);
+define('DISABLE_WP_CRON', filter_var($_ENV['DISALLOW_FILE_EDIT'], FILTER_VALIDATE_BOOLEAN));
 define('DISALLOW_FILE_EDIT', filter_var($_ENV['DISALLOW_FILE_EDIT'], FILTER_VALIDATE_BOOLEAN)); // Disable UI src files editor
 define('DISALLOW_FILE_MODS', filter_var($_ENV['DISALLOW_FILE_MODS'], FILTER_VALIDATE_BOOLEAN)); // Disable modifications on all files (and updates)
 define('AUTOMATIC_UPDATER_DISABLED', filter_var($_ENV['AUTOMATIC_UPDATER_DISABLED'], FILTER_VALIDATE_BOOLEAN)); // Disable auto updates
