@@ -35,7 +35,7 @@ function register_nav_menus() {
         // 'extra-menu' => __('Extra Menu', 'steroids') // Extra Navigation if needed (duplicate as many as you need!)
     ]);
 }
-add_action('init', 'Steroids\register_nav_menus');
+// add_action('init', 'Steroids\register_nav_menus');
 
 // Remove the <div> surrounding the dynamic navigation to cleanup markup
 function clean_dynamic_nav($args = '') {
