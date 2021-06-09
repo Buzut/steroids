@@ -10,6 +10,7 @@ $assets_version = file_get_contents(__DIR__ . '/assets-version');
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="<?php bloginfo('description'); ?>">
         <?php Steroids\add_styles($args); ?>
+        <link rel="preload" as="script" href="<?= get_template_directory_uri() ?>/scripts/build/main-<?= $assets_version ?>.js">
         <script async type="module" src="<?= get_template_directory_uri() ?>/scripts/build/main-<?= $assets_version ?>.js"></script>
         <script async nomodule src="<?= get_template_directory_uri() ?>/scripts/build/main-<?= $assets_version ?>.iife.js"></script>
         <?php wp_head(); ?>
