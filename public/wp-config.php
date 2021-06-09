@@ -14,9 +14,8 @@
 
 require dirname(__DIR__, 1) . '/vendor/autoload.php';
 
-use Symfony\Component\Dotenv\Dotenv;
-$dotenv = new Dotenv();
-$dotenv->load(dirname(__FILE__, 2) . '/.env');
+$dotenv = Dotenv\Dotenv::createImmutable(dirname(__FILE__, 2));
+$dotenv->safeLoad();
 
 // DB config
 $table_prefix = $_ENV['TABLE_PREFIX'];
