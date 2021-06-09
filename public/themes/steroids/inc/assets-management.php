@@ -6,6 +6,7 @@ defined('ABSPATH') || exit;
 // Ad stylesheets based on template params
 function add_styles($args) {
     $assets_version = file_get_contents(__DIR__ . '/../assets-version');
+    echo '<link rel="preload" as="style" href="' . get_template_directory_uri() . '/styles/build/critical-' . $assets_version . '.css">';
     echo '<link rel="stylesheet" href="' . get_template_directory_uri() . '/styles/build/critical-' . $assets_version . '.css">';
     echo '<link rel="stylesheet" href="' . get_template_directory_uri() . '/styles/build/lazy-' . $assets_version . '.css" media="print" onload="this.media=\'all\'">';
 
@@ -25,7 +26,11 @@ function add_styles($args) {
         }
 
         if ($lazy) echo '<link rel="stylesheet" href="' . get_template_directory_uri() . '/styles/build/' . $name . '-' . $assets_version . '.css" media="print" onload="this.media=\'all\'">';
-        else echo '<link rel="stylesheet" href="' . get_template_directory_uri() . '/styles/build/' . $name . '-' . $assets_version . '.css">';
+
+        else {
+            echo '<link rel="preload" as="style" href="' . get_template_directory_uri() . '/styles/build/' . $name . '-' . $assets_version . '.css">';
+            echo '<link rel="stylesheet" href="' . get_template_directory_uri() . '/styles/build/' . $name . '-' . $assets_version . '.css">';
+        }
     }
 }
 
