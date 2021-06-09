@@ -4,6 +4,7 @@
 composer.phar
 vendor/
 public/plugins/
+public/mu-plugins/
 public/uploads/
 public/wp/
 public/wp-cli*
