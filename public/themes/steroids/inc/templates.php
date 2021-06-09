@@ -2,7 +2,7 @@
 namespace Steroids;
 
 defined('ABSPATH') || exit;
-require dirname(__DIR__, 3) . '/vendor/autoload.php';
+require dirname(__DIR__, 4) . '/vendor/autoload.php';
 
 /*
  * The functions defined below are meant to be called directly in the templates
