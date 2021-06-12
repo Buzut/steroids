@@ -50,23 +50,8 @@ php composer.phar create-project buzut/steroids my-new-project
 
 You then have a working WordPress install with Steroids theme into your `my-new-project` directory. If you have downloaded composer locally, move it at the root of `my-new-project` directory.
 
-If you haven't created a database yet, you can do it in one command with the install script. It will:
-* create the database for the project,
-* set up WordPress admin user, email and password, project name and url.
-
-```bash
-./install.sh
-<dbname> \
-<title> \
-<url> \
-<admin_user> \
-<admin_passwd> \
-<admin_email> \
-[<mysql user (defaults to root)>] \
-[<mysql password (defaults to empty)>]
-```
-
-At last, head to the theme directory: `themes/steroids/` and run the usual `npm install`, you're all set up!
+If you haven't created a database yet, you can do it now, then head over to `.env` for the final config.
+At last, head to the theme directory: `themes/steroids/`, run the usual `npm install`, you're all set up!
 
 ## Usage
 
