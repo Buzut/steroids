@@ -28,14 +28,13 @@ function primary_nav() {
 
 // Register navigation
 // https://codex.wordpress.org/Function_Reference/register_nav_menus
-function register_nav_menus() {
+add_action('init', function () {
     register_nav_menus([
-        'primary' => 'Header menu'
+        'primary' => 'Header menu',
         // 'sidebar-menu' => __('Sidebar Menu', 'steroids'), // Sidebar Navigation
         // 'extra-menu' => __('Extra Menu', 'steroids') // Extra Navigation if needed (duplicate as many as you need!)
     ]);
-}
-// add_action('init', 'Steroids\register_nav_menus');
+});
 
 // Remove the <div> surrounding the dynamic navigation to cleanup markup
 function clean_dynamic_nav($args = '') {
