@@ -7,9 +7,9 @@ export default function router(routes) {
     const [bodyEl] = document.getElementsByTagName('body');
     const promises = [];
 
-    Object.keys(routes).forEach(route => {
+    Object.keys(routes).forEach((route) => {
         if (Array.isArray(routes[route])) {
-            routes[route].forEach(className => {
+            routes[route].forEach((className) => {
                 if (bodyEl.classList.contains(className)) {
                     promises.push(import(`./routes/${route}.js`));
                 }
