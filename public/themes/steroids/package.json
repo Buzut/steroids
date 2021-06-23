@@ -44,7 +44,7 @@
     "eslint-plugin-import": "^2.20.2",
     "gzip-cli": "^1.1.1",
     "imagemin-cli": "^6.0.0",
-    "imagemin-webp": "^5.0.0",
+    "imagemin-webp": "^6.0.0",
     "less": "^3.11.1",
     "livereload": "^0.9.3",
     "nodemon": "^1.19.4",
