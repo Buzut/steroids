@@ -12,6 +12,8 @@ add_image_size('small', 120, '', true); // Small Thumbnail
 //     unset($sizes['medium']);
 //     unset($sizes['medium_large']);
 //     unset($sizes['large']);
+//     unset($sizes['1536x1536']); // 2x medium-large size
+//     unset($sizes['2048x2048']); // 2x large size
 //     return $sizes;
 // });
 
