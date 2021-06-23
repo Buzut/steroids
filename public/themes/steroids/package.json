@@ -16,7 +16,7 @@
     "compress:css": "gzip ./styles/*.css --extension=gz --extension=br",
     "compress:js": "gzip './scripts/*.js' --ignore='./node_modules/**' --extension=gz --extension=br",
     "compress:svg": "gzip ./img/**/*.svg --extension=gz --extension=br",
-    "compress:img": "find . \\( -name '*.jpg' -o -name '*.jpeg' -o -name '*.png' \\) -exec bash -c 'imagemin -p=webp $1 > $1.webp' _ {} \\;",
+    "compress:img": "find . -path './node_modules' -prune -o \\( -name '*.jpg' -o -name '*.jpeg' -o -name '*.png' \\) -exec bash -c 'imagemin -p=webp $1 > $1.webp' _ {} \\;",
     "compress": "npm run compress:css && npm run compress:js && npm run compress:svg && npm run compress:img",
     "generateAssetsVersionFile": "bash -c 'echo -n $npm_package_version > assets-version'",
     "clean:build": "find . -path './node_modules' -prune -o \\( -name '*.min.css' -o -name '*.min.js' -o -name '*.map' \\) -exec rm '{}' \\;",
