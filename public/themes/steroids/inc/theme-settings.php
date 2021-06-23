@@ -80,7 +80,7 @@ if (REMOVE_DNS_PREFETCH) {
 }
 
 // https://developer.wordpress.org/reference/hooks/jpeg_quality/
-add_filter('jpeg_quality', function($arg){ return IMG_COMPRESS_QUALITY; }); // How to compress images
+add_filter('jpeg_quality', function ($arg) { return IMG_COMPRESS_QUALITY; }); // How to compress images
 
 if (REMOVE_SRCSET) add_filter('wp_calculate_image_srcset_meta', '__return_null'); // Remove srcset
 
@@ -124,7 +124,6 @@ if (REPLACE_NON_ASCII_IN_IMG_NAME) {
 // also replace auto-scaling
 // https://make.wordpress.org/core/2019/10/09/introducing-handling-of-big-images-in-wordpress-5-3/
 function replace_uploaded_image($image_data) {
-    // var_dump($image_data);
     if (!isset($image_data['sizes']['large'])) return $image_data;
 
     $upload_dir = wp_upload_dir();
