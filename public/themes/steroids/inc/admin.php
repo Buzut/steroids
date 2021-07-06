@@ -12,6 +12,8 @@ if (DISABLE_PLUGIN_DELETION) {
 // Hide comments from admin sidebar
 // add_action('admin_menu', function () {
 //     remove_menu_page('edit-comments.php');
+//     // Show all removable entries
+//     echo '<pre>' . print_r( $GLOBALS[ 'menu' ], TRUE) . '</pre>';
 // });
 
 // // Hide comments icon from toolbar
