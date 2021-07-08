@@ -1,6 +1,6 @@
 ![Steroid's logo](https://github.com/Buzut/steroids/blob/master/public/themes/steroids/img/logo.jpg)
 
-# World's most advanced theme for frontend developers
+# WordPress's most powerful framework
 WordPress starter theme packed with modern tooling to make your life easier and your code more efficient.
 Steroids is an opinionated WordPress starter theme built for frontend & JS developers: one command install, Less styles, ESNext, ES modules, dynamic imports, linting, npm deploy command and much more…
 
