@@ -6,6 +6,7 @@
     "gitinit": "test -d .git && cd .git/hooks/ && curl -O https://raw.githubusercontent.com/Buzut/git-emojis-hook/master/commit-msg && curl -O https://raw.githubusercontent.com/Buzut/git-emojis-hook/master/prepare-commit-msg && chmod +x * || exit 0",
     "getjquery": "curl https://code.jquery.com/jquery-3.6.0.min.js -o scripts/jquery.js",
     "prepare": "npm run gitinit && npm run getjquery && npm run generateAssetsVersionFile",
+    "css:build:dev": "lessc --source-map styles/critical.less styles/build/critical-$npm_package_version.css && lessc --source-map styles/lazy.less styles/build/lazy-$npm_package_version.css && for file in styles/routes/*.less; do --source-map lessc $file styles/build/`basename $file .less`-$npm_package_version.css ; done",
     "css:build:prod": "rm -rf styles/build/ && mkdir styles/build && lessc styles/critical.less | postcss --use autoprefixer -b 'last 2 versions' | cssmin > styles/build/critical-$npm_package_version.css && lessc styles/lazy.less | postcss --use autoprefixer -b 'last 2 versions' | cssmin > styles/build/lazy-$npm_package_version.css && for file in styles/routes/*.less; do lessc $file styles/build/`basename $file .less`-$npm_package_version.css ; done",
     "css:watch": "nodemon -e less --watch styles -x 'npm run css:build:dev'",
     "js:esmbuild": "BABEL_ENV=esm rollup --config",
