@@ -44,6 +44,7 @@ define('DISABLE_WP_CRON', filter_var($_ENV['DISALLOW_FILE_EDIT'], FILTER_VALIDAT
 define('DISALLOW_FILE_EDIT', filter_var($_ENV['DISALLOW_FILE_EDIT'], FILTER_VALIDATE_BOOLEAN)); // Disable UI src files editor
 define('DISALLOW_FILE_MODS', filter_var($_ENV['DISALLOW_FILE_MODS'], FILTER_VALIDATE_BOOLEAN)); // Disable modifications on all files (and updates)
 define('AUTOMATIC_UPDATER_DISABLED', filter_var($_ENV['AUTOMATIC_UPDATER_DISABLED'], FILTER_VALIDATE_BOOLEAN)); // Disable auto updates
+define('WP_POST_REVISIONS', $_ENV['WP_POST_REVISIONS']); // Number of revisions to save
 
 // Security salts
 define('AUTH_KEY', $_ENV['AUTH_KEY']);
