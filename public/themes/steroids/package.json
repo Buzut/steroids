@@ -52,7 +52,7 @@
     "rollup": "^2.33.1",
     "rollup-plugin-terser": "^7.0.2",
     "stylelint": "^13.13.0",
-    "stylelint-config-standard": "^18.3.0",
+    "stylelint-config-standard": "^22.0.0",
     "stylelint-high-performance-animation": "^1.5.2",
     "stylelint-no-unsupported-browser-features": "^3.0.2",
     "stylelint-order": "^4.0.0"
