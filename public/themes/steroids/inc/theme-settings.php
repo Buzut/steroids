@@ -24,6 +24,7 @@ if (THEME_SUPPORT_WOOCOMMERCE) add_theme_support('woocommerce');
 if (THEME_SUPPORT_TITLE_TAG) add_theme_support('title-tag');
 if (THEME_SUPPORT_EXCERPT) add_post_type_support('page', 'excerpt');
 if (THEME_SUPPORT_POST_THUMBNAIL) add_theme_support('post-thumbnails');
+if (THEME_SUPPORT_WIDGETS) add_theme_support('widgets');
 
 // Remove p tag auto insertion
 if (REMOVE_AUTO_P_TAG) {

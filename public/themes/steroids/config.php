@@ -19,6 +19,7 @@ const THEME_SUPPORT_EXCERPT = true;
 const THEME_SUPPORT_TITLE_TAG = true;
 const THEME_SUPPORT_WOOCOMMERCE = false;
 const THEME_SUPPORT_POST_THUMBNAIL = true;
+const THEME_SUPPORT_WIDGETS = false;
 const DEACTIVATE_GUTENBERG_DEFAULT_CSS = false;
 
 /** Image management */
