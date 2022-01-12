@@ -4,25 +4,26 @@ defined('ABSPATH') || exit;
 
 // Define navigation
 // add as many as you need and reference them in register_nav_menus ƒ below
+// add
 // https://developer.wordpress.org/reference/functions/wp_nav_menu/
-function primary_nav() {
+function show_menu($location) {
     wp_nav_menu([
-        'theme_location'  => 'primary',
-        'menu'            => '',
-        'container'       => 'div',
+        'theme_location'  => $location,
+        'menu' => '',
+        'container' => 'div',
         'container_class' => 'menu-{menu slug}-container',
-        'container_id'    => '',
-        'menu_class'      => 'menu',
-        'menu_id'         => '',
-        'echo'            => true,
-        'fallback_cb'     => 'wp_page_menu',
-        'before'          => '',
-        'after'           => '',
-        'link_before'     => '',
-        'link_after'      => '',
-        'items_wrap'      => '<ul>%3$s</ul>',
-        'depth'           => 0,
-        'walker'          => ''
+        'container_id' => '',
+        'menu_class' => 'menu',
+        'menu_id' => '',
+        'echo' => true,
+        'fallback_cb' => 'wp_page_menu',
+        'before' => '',
+        'after' => '',
+        'link_before' => '',
+        'link_after' => '',
+        'items_wrap' => '<ul>%3$s</ul>',
+        'depth' => 0,
+        'walker' => ''
     ]);
 }
 

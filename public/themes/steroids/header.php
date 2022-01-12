@@ -31,6 +31,6 @@ $assets_version = file_get_contents(__DIR__ . '/assets-version');
             </div>
 
             <nav class="nav">
-                <?php Steroids\primary_nav(); ?>
+                <?php Steroids\show_menu('primary'); ?>
             </nav>
         </header>
