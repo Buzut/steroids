@@ -1,0 +1,4 @@
+* text=auto
+
+*.less text diff=css
+package-lock.json text -diff
