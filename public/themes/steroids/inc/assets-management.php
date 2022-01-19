@@ -1,6 +1,5 @@
 <?php
 namespace Steroids;
-
 defined('ABSPATH') || exit;
 
 // Ad stylesheets based on template params

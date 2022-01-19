@@ -1,4 +1,5 @@
 <?php
+namespace Steroids;
 defined('ABSPATH') || exit;
 
 add_image_size('large', 700, '', true); // Large Thumbnail
