@@ -1,4 +1,5 @@
 <?php
+defined('ABSPATH') || exit;
 
 add_image_size('large', 700, '', true); // Large Thumbnail
 add_image_size('medium', 250, '', true); // Medium Thumbnail
