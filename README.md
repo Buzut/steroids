@@ -153,30 +153,24 @@ The third folder named `routes/` contains all the files that are conditionally l
 
 Subfolders can obviously be created to better sort your styles but files in these subfolders are compiled only if imported by files of their parent folder (`routes/*.less`), otherwise, they serve no purpose.
 
-Finaly, to dynamically load stylesheets on a given template, you'll pass the stylesheet(s) slug(s) in the shape of an array as the second parameter of the `get_header` function: `get_header(null, ['slug'])`.
+Finaly, to dynamically load stylesheets on a given template, you'll pass the stylesheet(s) slug(s) in the shape of an array as the second parameter of the `get_header` function: `get_header(null, ['stylesheets' => ['slug']])`.
 
 For instance, let's say we need to import our stylesheet `styles/routes/blog.less` on our blog posts. The template responsible for these blog posts is `single.php`. So the file will start like this:
 
 ```php
-<?php
-defined('ABSPATH') || exit;
-get_header(null, ['blog']);
+get_header(null, ['stylesheets' => ['blog']]);
 ```
 
 Now let's say that we also want to import a second stylesheet that is dedicated to comments, creatively named `comments.less` (that's also used on product pages). We'll do something like the following.
 
 ```php
-<?php
-defined('ABSPATH') || exit;
-get_header(null, ['blog', 'comments']);
+get_header(null, ['stylesheets' => ['blog', 'comments']]);
 ```
 
 We might realise that `comments.less` contains a lot of styles and that they are at the end of the article, far under the fold. We therefore would rather have these styles loaded asynchronously. Fair enough.
 
 ```php
-<?php
-defined('ABSPATH') || exit;
-get_header(null, [['name' => 'blog', 'lazy' => false], ['name' => 'comments', 'lazy' => true]]);
+get_header(null, ['stylesheets' => [['name' => 'blog', 'lazy' => false], ['name' => 'comments', 'lazy' => true]]]);
 ```
 
 This way, the blog stylesheet will load right away, but the comments stylesheet will load after initial pageload.
@@ -184,9 +178,13 @@ This way, the blog stylesheet will load right away, but the comments stylesheet 
 Note that `'lazy' => false` is the default and can be omitted, so the following is correct and has the same effect.
 
 ```php
-<?php
-defined('ABSPATH') || exit;
-get_header(null, [['name' => 'blog'], ['name' => 'comments', 'lazy' => true]]);
+get_header(null, ['stylesheets' => [['name' => 'blog'], ['name' => 'comments', 'lazy' => true]]]);
+```
+
+Apart from the stylesheets, the options array allows you to define aditional classes you'd want to add to the html `body`. This is very usefull for when you need to apply styles in specific areas of a given page.
+
+```php
+get_header(null, ['stylesheets' => ['blog'], 'body_classes' => ['class_1', 'class_2']]);
 ```
 
 ### Assets pre-compression
@@ -203,11 +201,10 @@ Seriously, a lot of plugins are of no use on most pages:
 
 **WTF don't you think?**
 
-For that very reason, I use [Asset CleanUp Pro](https://shareasale.com/r.cfm?b=1448730&u=2800929&m=92973&urllink=&afftrack=) on every site I build. It allows you to unload any core, theme and plugin CSS/JS site-wide or on a per-page basis. It also allows you to completely control when a plugin executes its PHP code.
+For that very reason, I use [Asset CleanUp Pro](https://www.gabelivan.com/items/wp-asset-cleanup-pro/) on every site I build. It allows you to unload any core, theme and plugin CSS/JS site-wide or on a per-page basis. It also allows you to completely control when a plugin executes its PHP code.
 
 There's more, it allows you to remove all useless WordPress styles, assets and markup (like image emojis, comments RSS feed etc).
-
-Note: if you buy the plugin via the previous link, it'll buy me a coffe. That will help support my work. Also, there is a [free version](https://wordpress.org/plugins/wp-asset-clean-up/) that's nice too if you don't need the features of the Pro version.
+Also, there is a [free version](https://wordpress.org/plugins/wp-asset-clean-up/) that's nice too if you don't need the features of the Pro version.
 
 ## Git
 You can initialise git with composer `composer run-script gitinit`. This will initialise a Git repo with [Git Emojis](https://github.com/Buzut/git-emojis-hook) hooks.

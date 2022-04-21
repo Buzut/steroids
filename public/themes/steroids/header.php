@@ -1,6 +1,7 @@
 <?php
 defined('ABSPATH') || exit;
 $assets_version = file_get_contents(__DIR__ . '/assets-version');
+$body_classes = (is_array($args) && isset($args['body_classes']) && is_array($args['body_classes'])) ? implode(' ', $args['body_classes']) : '';
 ?>
 <!doctype html>
 <html <?php language_attributes(); ?>>
@@ -22,7 +23,7 @@ $assets_version = file_get_contents(__DIR__ . '/assets-version');
         <?php endif; ?>
     </head>
 
-    <body <?php body_class(); ?>>
+    <body <?php body_class($body_classes); ?>>
         <header>
             <div class="logo">
                 <a href="<?= home_url() ?>">

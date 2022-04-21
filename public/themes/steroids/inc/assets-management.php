@@ -9,9 +9,9 @@ function add_styles($args) {
     echo '<link rel="stylesheet" href="' . get_template_directory_uri() . '/styles/build/critical-' . $assets_version . '.css">';
     echo '<link rel="stylesheet" href="' . get_template_directory_uri() . '/styles/build/lazy-' . $assets_version . '.css" media="print" onload="this.media=\'all\'">';
 
-    if (!is_array($args) || !count($args)) return;
+    if (!is_array($args) || !count($args) || !isset($args['stylesheets']) || !is_array($args['stylesheets']) || !count($args['stylesheets'])) return;
 
-    foreach ($args as $stylesheet) {
+    foreach ($args['stylesheets'] as $stylesheet) {
         if (is_array($stylesheet)) {
             $name = $stylesheet['name'];
 
