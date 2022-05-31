@@ -18,13 +18,13 @@ if (DISABLE_UI_UPDATES && (get_current_user_id() !== 1 || DISABLE_UI_UPDATES_FOR
     add_filter('pre_site_transient_update_themes', 'Steroids\hide_updates'); // hide updates for all themes
 }
 
-if (THEME_SUPPORT_HTML5) add_theme_support('html5');
 if (THEME_SUPPORT_MENUS) add_theme_support('menus');
 if (THEME_SUPPORT_WOOCOMMERCE) add_theme_support('woocommerce');
 if (THEME_SUPPORT_TITLE_TAG) add_theme_support('title-tag');
 if (THEME_SUPPORT_EXCERPT) add_post_type_support('page', 'excerpt');
 if (THEME_SUPPORT_POST_THUMBNAIL) add_theme_support('post-thumbnails');
 if (THEME_SUPPORT_WIDGETS) add_theme_support('widgets');
+if (THEME_SUPPORT_HTML5) add_theme_support('html5', ['comment-list', 'comment-form', 'search-form', 'gallery', 'caption', 'style', 'script']);
 
 // Remove p tag auto insertion
 if (REMOVE_AUTO_P_TAG) {
